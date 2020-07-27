@@ -680,18 +680,20 @@ var gameBoard={
     "col6":[ "white","white",  "white", "white", "white", "white" ]
 }
 console.log(gameBoard);
-var name = "SavedB";
+//var name = "SavedB";
+var test  ="test";
 function save(){
+  var name = slotNum.toString() + col0AvlSpot.toString() + col1AvlSpot.toString() +col2AvlSpot.toString() +col3AvlSpot.toString() +col4AvlSpot.toString() +col5AvlSpot.toString() + col6AvlSpot.toString() 
   var savedBoard = JSON.stringify(gameBoard);
   console.log(savedBoard);
-  document.cookie = name + encodeURIComponent(savedBoard); "max-age=" + 30*24*60*60;
+  document.cookie = test + encodeURIComponent(name+savedBoard); "max-age=" + 30*24*60*60;
 }
 function restore(){
-  
   console.log(getCookie(name));
+  getCookie(name);
 }
-function getCookie(name) {
-//  console.log(decodeURIComponent(document.cookie));
+function getCookie(test) {
+console.log(decodeURIComponent(document.cookie));
   var original = decodeURIComponent(document.cookie);
   var newString = original.toString();
   newString = newString.replace(/[\[\]"]+/g, '');
@@ -703,11 +705,22 @@ function getCookie(name) {
   newString = newString.replace(/col4:/g,'');
   newString = newString.replace(/col5:/g,'');
   newString = newString.replace(/col6:/g,'');
-  newString = newString.replace("SavedB{", '');
+  newString = newString.replace("test", '');
+    newString = newString.replace("{", '');
+
   newString = newString.replace("}", '');
+  slotNum = parseInt(newString.substring(0, 2),10);
+  col0AvlSpot = parseInt(newString.substring(2,3),10);
+  console.log(col0AvlSpot);
+  col1AvlSpot = parseInt(newString.substring(3,4),10);
+  col2AvlSpot = parseInt(newString.substring(4,5),10);
+  col3AvlSpot = parseInt(newString.substring(5,6),10);
+  col4AvlSpot = parseInt(newString.substring(6,7),10);
+  col5AvlSpot = parseInt(newString.substring(7,8),10);
+  col6AvlSpot = parseInt(newString.substring(8,9),10);
+  newString = newString.substring(9,newString.length );
   newString = newString.split(" ");
-
-
+  console.log(newString);
         tableCells[0].style.setProperty("background-color",newString[0])
         tableCells[1].style.setProperty("background-color",newString[6])
         tableCells[2].style.setProperty("background-color",newString[12])
@@ -751,4 +764,28 @@ function getCookie(name) {
         tableCells[40].style.setProperty("background-color",newString[35])
         tableCells[41].style.setProperty("background-color",newString[41])
     
+  // new code add update the board for checkDiagonal
+    for(i=0;i<42;i++){
+        board[i]=tableCells[i].style.getPropertyValue("background-color")//
+    }
+  // for horizontal check
+    for(i=0;i<7;i++){
+        row0Color[i]=tableCells[i].style.getPropertyValue("background-color");
+        row1Color[i]=tableCells[i+7].style.getPropertyValue("background-color");
+        row2Color[i]=tableCells[i+14].style.getPropertyValue("background-color");
+        row3Color[i]=tableCells[i+21].style.getPropertyValue("background-color");
+        row4Color[i]=tableCells[i+28].style.getPropertyValue("background-color");
+        row5Color[i]=tableCells[i+35].style.getPropertyValue("background-color");
+    }
+    for(i=41;i>=0;i--){
+        saveColor=tableCells[i].style.getPropertyValue("background-color");
+        console.log(saveColor);
+        if(saveColor!="white"&&(i%7==6)) col6Color.push(saveColor);
+        if(saveColor!="white"&&(i%7==5)) col5Color.push(saveColor);
+        if(saveColor!="white"&&(i%7==4)) col4Color.push(saveColor);
+        if(saveColor!="white"&&(i%7==3)) col3Color.push(saveColor);
+        if(saveColor!="white"&&(i%7==2)) col2Color.push(saveColor);
+        if(saveColor!="white"&&(i%7==1)) col1Color.push(saveColor);
+        if(saveColor!="white"&&(i%7==0)) col0Color.push(saveColor);
+    }
 }
