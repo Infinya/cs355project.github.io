@@ -12,13 +12,13 @@ var col3=document.getElementsByClassName("col3");
 var col4=document.getElementsByClassName("col4");
 var col5=document.getElementsByClassName("col5");
 var col6=document.getElementsByClassName("col6");
-var col0Color=["white","white","white","white","white","white"];
-var col1Color=["white","white","white","white","white","white"];
-var col2Color=["white","white","white","white","white","white"];
-var col3Color=["white","white","white","white","white","white"];
-var col4Color=["white","white","white","white","white","white"];
-var col5Color=["white","white","white","white","white","white"];
-var col6Color=["white","white","white","white","white","white"];
+var col0Color=[];
+var col1Color=[];
+var col2Color=[];
+var col3Color=[];
+var col4Color=[];
+var col5Color=[];
+var col6Color=[];
 var col0AvlSpot=6, col1AvlSpot=6,col2AvlSpot=6,col3AvlSpot=6,col4AvlSpot=6,col5AvlSpot=6,col6AvlSpot=6;
 //All row elements
 var rowNum=-1;
@@ -63,40 +63,48 @@ function takeback(){
         }
     }
     colNum=index%7;
-    rowNum=Math.floor(index/7);
     switch(colNum){
         case 0:
             col0AvlSpot++
-            col0Color[rowNum]="white";
+            col0Color.pop()
+			//console.log(colNum, col0AvlSpot);
+			gameBoard.col0[col0AvlSpot-1]="white";
             break;
         case 1:
             col1AvlSpot++
-            col1Color[rowNum]="white";
+            col1Color.pop()
+			console.log(colNum);
+			gameBoard.col1[col1AvlSpot-1]="white";
             break;
         case 2:
             col2AvlSpot++
-            col2Color[rowNum]="white";
+            col2Color.pop()
+		gameBoard.col2[col2AvlSpot-1]="white";
             break;
         case 3:
             col3AvlSpot++
-            col3Color[rowNum]="white";
+            col3Color.pop()
+			gameBoard.col3[col3AvlSpot-1]="white";
             break;
         case 4:
             col4AvlSpot++
-            col4Color[rowNum]="white";
+            col4Color.pop()
+			gameBoard.col4[co40AvlSpot-1]="white";
             break;
         case 5:
             col5AvlSpot++
-            col5Color[rowNum]="white";
+            col5Color.pop()
+			gameBoard.col5[col5AvlSpot-1]="white";
             break;
         case 6:
             col6AvlSpot++
-            col6Color[rowNum]="white";
+            col6Color.pop()
+			gameBoard.col6[col6AvlSpot-1]="white";
             break;
         default:
             break;
     }
-    
+    rowNum=Math.floor(index/7);
     var color="white"
     switch(rowNum){
         case 0:
@@ -337,37 +345,28 @@ function checkVertically(){
         if( Button.confirm() ) restart();
         else return;
     }
-  for(i=0;i<tableCells.length;i++){
-        var slotId=tableCells[i].getAttribute("id");
-        if(currentSlotId==slotId){
-            index=i;
-            break;
-        }
-    }
-    rowNum=Math.floor(index/7);
-    colNum=index%7;
     // Check vertical
     switch(colNum){
         case 0:
-            col0Color[rowNum]=color;
+            col0Color.push(color);
             break;
         case 1:
-            col1Color[rowNum]=color;
+            col1Color.push(color);
             break;
         case 2:
-            col2Color[rowNum]=color;
+            col2Color.push(color);
             break;
         case 3:
-            col3Color[rowNum]=color;
+            col3Color.push(color);
             break;
         case 4:
-            col4Color[rowNum]=color;
+            col4Color.push(color);
             break;
         case 5:
-            col5Color[rowNum]=color;
+            col5Color.push(color);
             break;
         case 6:
-            col6Color[rowNum]=color;
+            col6Color.push(color);
             break;
         default:
             return; 
@@ -375,58 +374,65 @@ function checkVertically(){
     switch(colNum){
         case 0:
             colorMatched=0;
-            for(i=0;i<col0Color.length;i++){
-                if(color==col0color[i]) colorMatched++;
+            for(var i=1;i<=col0Color.length;i++){
+                var temp=col0[6-i].getAttribute("id");
+                var colorChecking=document.getElementById(temp).style.getPropertyValue("background-color");
+                if(color==colorChecking) colorMatched++;
                 else colorMatched=0;
-                if(colorMatched==4) break;
             }
             break;
         case 1:
             colorMatched=0;
-            for(i=0;i<col1Color.length;i++){
-                if(color==col1Color[i]) colorMatched++;
+            for(i=1;i<=col1Color.length;i++){
+                var temp=col1[6-i].getAttribute("id");
+                var colorChecking=document.getElementById(temp).style.getPropertyValue("background-color");
+                if(color==colorChecking) colorMatched++;
                 else colorMatched=0;
-                if(colorMatched==4) break;
             }
             break;
         case 2:
             colorMatched=0;
-            for(i=0;i<col2Color.length;i++){
-                if(color==col2Color[i]) colorMatched++;
+            for(i=1;i<=col2Color.length;i++){
+                var temp=col2[6-i].getAttribute("id");
+                var colorChecking=document.getElementById(temp).style.getPropertyValue("background-color");
+                if(color==colorChecking) colorMatched++;
                 else colorMatched=0;
-                if(colorMatched==4) break;
             }
             break;
         case 3:
             colorMatched=0;
-            for(i=0;i<col3Color.length;i++){
-                if(color==col3Color[i]) colorMatched++;
+            for(i=1;i<=col3Color.length;i++){
+                var temp=col3[6-i].getAttribute("id");
+                var colorChecking=document.getElementById(temp).style.getPropertyValue("background-color");
+                if(color==colorChecking) colorMatched++;
                 else colorMatched=0;
-                if(colorMatched==4) break;
             }
             break;
         case 4:
             colorMatched=0;
-            for(i=0;i<col4Color.length;i++){
-                if(color==col4Color[i]) colorMatched++;
+            for(i=1;i<=col4Color.length;i++){
+                var temp=col4[6-i].getAttribute("id");
+                var colorChecking=document.getElementById(temp).style.getPropertyValue("background-color");
+                if(color==colorChecking) colorMatched++;
                 else colorMatched=0;
-                if(colorMatched==4) break;
             }
             break;
         case 5:
             colorMatched=0;
-            for(i=0;i<col5Color.length;i++){
-                if(color==col5Color[i]) colorMatched++;
+            for(i=1;i<=col5Color.length;i++){
+                var temp=col5[6-i].getAttribute("id");
+                var colorChecking=document.getElementById(temp).style.getPropertyValue("background-color");
+                if(color==colorChecking) colorMatched++;
                 else colorMatched=0;
-                if(colorMatched==4) break;
             }
             break;
         case 6:
             colorMatched=0;
-            for(i=0;i<col6Color.length;i++){
-                if(color==col6Color[i]) colorMatched++;
+            for(i=1;i<=col6Color.length;i++){
+                var temp=col6[6-i].getAttribute("id");
+                var colorChecking=document.getElementById(temp).style.getPropertyValue("background-color");
+                if(color==colorChecking) colorMatched++;
                 else colorMatched=0;
-                if(colorMatched==4) break;
             }
             break;
         default:
@@ -674,20 +680,18 @@ var gameBoard={
     "col6":[ "white","white",  "white", "white", "white", "white" ]
 }
 console.log(gameBoard);
-//var name = "SavedB";
-var test  ="test";
+var name = "SavedB";
 function save(){
-  var name = slotNum.toString() + col0AvlSpot.toString() + col1AvlSpot.toString() +col2AvlSpot.toString() +col3AvlSpot.toString() +col4AvlSpot.toString() +col5AvlSpot.toString() + col6AvlSpot.toString() 
   var savedBoard = JSON.stringify(gameBoard);
   console.log(savedBoard);
-  document.cookie = test + encodeURIComponent(name+savedBoard); "max-age=" + 30*24*60*60;
+  document.cookie = name + encodeURIComponent(savedBoard); "max-age=" + 30*24*60*60;
 }
 function restore(){
+  
   console.log(getCookie(name));
-  getCookie(name);
 }
-function getCookie(test) {
-console.log(decodeURIComponent(document.cookie));
+function getCookie(name) {
+//  console.log(decodeURIComponent(document.cookie));
   var original = decodeURIComponent(document.cookie);
   var newString = original.toString();
   newString = newString.replace(/[\[\]"]+/g, '');
@@ -699,22 +703,11 @@ console.log(decodeURIComponent(document.cookie));
   newString = newString.replace(/col4:/g,'');
   newString = newString.replace(/col5:/g,'');
   newString = newString.replace(/col6:/g,'');
-  newString = newString.replace("test", '');
-    newString = newString.replace("{", '');
-
+  newString = newString.replace("SavedB{", '');
   newString = newString.replace("}", '');
-  slotNum = parseInt(newString.substring(0, 2),10);
-  col0AvlSpot = parseInt(newString.substring(2,3),10);
-  console.log(col0AvlSpot);
-  col1AvlSpot = parseInt(newString.substring(3,4),10);
-  col2AvlSpot = parseInt(newString.substring(4,5),10);
-  col3AvlSpot = parseInt(newString.substring(5,6),10);
-  col4AvlSpot = parseInt(newString.substring(6,7),10);
-  col5AvlSpot = parseInt(newString.substring(7,8),10);
-  col6AvlSpot = parseInt(newString.substring(8,9),10);
-  newString = newString.substring(9,newString.length );
   newString = newString.split(" ");
-  console.log(newString);
+
+
         tableCells[0].style.setProperty("background-color",newString[0])
         tableCells[1].style.setProperty("background-color",newString[6])
         tableCells[2].style.setProperty("background-color",newString[12])
@@ -758,27 +751,4 @@ console.log(decodeURIComponent(document.cookie));
         tableCells[40].style.setProperty("background-color",newString[35])
         tableCells[41].style.setProperty("background-color",newString[41])
     
-  // new code add update the board for checkDiagonal
-    for(i=0;i<42;i++){
-        board[i]=tableCells[i].style.getPropertyValue("background-color")//
-    }
-  // for horizontal check
-    for(i=0;i<7;i++){
-        row0Color[i]=tableCells[i].style.getPropertyValue("background-color");
-        row1Color[i]=tableCells[i+7].style.getPropertyValue("background-color");
-        row2Color[i]=tableCells[i+14].style.getPropertyValue("background-color");
-        row3Color[i]=tableCells[i+21].style.getPropertyValue("background-color");
-        row4Color[i]=tableCells[i+28].style.getPropertyValue("background-color");
-        row5Color[i]=tableCells[i+35].style.getPropertyValue("background-color");
-    }
-     for(i=0;i<6;i++){
-        saveColor=tableCells[i].style.getPropertyValue("background-color");
-        col0Color[i]=tableCells[i*7].style.getPropertyValue("background-color");
-        col1Color[i]=tableCells[i*7+1].style.getPropertyValue("background-color");
-        col2Color[i]=tableCells[i*7+2].style.getPropertyValue("background-color");
-        col3Color[i]=tableCells[i*7+3].style.getPropertyValue("background-color");
-        col4Color[i]=tableCells[i*7+4].style.getPropertyValue("background-color");
-        col5Color[i]=tableCells[i*7+5].style.getPropertyValue("background-color");
-        col6Color[i]=tableCells[i*7+6].style.getPropertyValue("background-color");
-    }
 }
