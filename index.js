@@ -626,7 +626,7 @@ function restart(){
     for(var i=0;i<tableCells.length;i++){
         tableCells[i].style.setProperty("background-color","white")
     }
-	
+	  
     slotNum=42;
     col0AvlSpot=6;
     col1AvlSpot=6;
@@ -661,7 +661,17 @@ function restart(){
     moves=[];
     colorOrder=[];
     colorMatched=0;
+  
+for( var i = 0 ; i<6 ; i++){
+      				gameBoard.col0[i]="white";
+            	gameBoard.col1[i]="white";
+      				gameBoard.col2[i]="white";
+      				gameBoard.col3[i]="white";
+      				gameBoard.col4[i]="white";
+      				gameBoard.col5[i]="white";
+              gameBoard.col6[i]="white";
 
+    }
    // color="";
 }
 /*function showMove(){
@@ -763,11 +773,21 @@ console.log(decodeURIComponent(document.cookie));
         tableCells[39].style.setProperty("background-color",newString[29])
         tableCells[40].style.setProperty("background-color",newString[35])
         tableCells[41].style.setProperty("background-color",newString[41])
-    
-  // new code add update the board for checkDiagonal
+    for( var i = 0 ; i<6 ; i++){
+      				gameBoard.col0[i]=newString[i];
+            	gameBoard.col1[i]=newString[i+6];
+      				gameBoard.col2[i]=newString[i+12];
+      				gameBoard.col3[i]=newString[i+18];
+      				gameBoard.col4[i]=newString[i+24];
+      				gameBoard.col5[i]=newString[i+30];
+              gameBoard.col6[i]=newString[i+36];
+
+    }
+    // new code add update the board for checkDiagonal
     for(i=0;i<42;i++){
         board[i]=tableCells[i].style.getPropertyValue("background-color")//
     }
+    
   // for horizontal check
     for(i=0;i<7;i++){
         row0Color[i]=tableCells[i].style.getPropertyValue("background-color");
@@ -778,7 +798,7 @@ console.log(decodeURIComponent(document.cookie));
         row5Color[i]=tableCells[i+35].style.getPropertyValue("background-color");
     }
     for(i=41;i>=0;i--){
-        saveColor=tableCells[i].style.getPropertyValue("background-color");
+        var saveColor = tableCells[i].style.getPropertyValue("background-color");
         console.log(saveColor);
         if(saveColor!="white"&&(i%7==6)) col6Color.push(saveColor);
         if(saveColor!="white"&&(i%7==5)) col5Color.push(saveColor);
@@ -788,4 +808,5 @@ console.log(decodeURIComponent(document.cookie));
         if(saveColor!="white"&&(i%7==1)) col1Color.push(saveColor);
         if(saveColor!="white"&&(i%7==0)) col0Color.push(saveColor);
     }
-}
+  
+    }
