@@ -1,132 +1,54 @@
-var currentSlotId="";
+// color represents the color of checker that been place to the slot at this turn.
+var color="";
+// all table cell elements total 42 
 var tableCells=document.getElementsByTagName("td");
-var slotNum=42;
-var index=-1;
+// initialized to 42 because table is 6*7 total has 42 slots 
+var slotNum=42; 
+// for win condition check
 var colorMatched=0;
-// all column elements
+
+var index=-1;
 var colNum=-1;
-var col0=document.getElementsByClassName("col0");
-var col1=document.getElementsByClassName("col1");
-var col2=document.getElementsByClassName("col2");
-var col3=document.getElementsByClassName("col3");
-var col4=document.getElementsByClassName("col4");
-var col5=document.getElementsByClassName("col5");
-var col6=document.getElementsByClassName("col6");
-var col0Color=[];
-var col1Color=[];
-var col2Color=[];
-var col3Color=[];
-var col4Color=[];
-var col5Color=[];
-var col6Color=[];
-var col0AvlSpot=6, col1AvlSpot=6,col2AvlSpot=6,col3AvlSpot=6,col4AvlSpot=6,col5AvlSpot=6,col6AvlSpot=6;
-//All row elements
 var rowNum=-1;
-var row0=["slot00","slot01","slot02","slot03","slot04","slot05","slot06"];
-var row1=["slot10","slot11","slot12","slot13","slot14","slot15","slot16"];
-var row2=["slot20","slot21","slot22","slot23","slot24","slot25","slot26"];
-var row3=["slot30","slot31","slot32","slot33","slot34","slot35","slot36"];
-var row4=["slot40","slot41","slot42","slot43","slot44","slot45","slot46"];
-var row5=["slot50","slot51","slot52","slot53","slot54","slot55","slot56"];
-var row0Color=["white","white","white","white","white","white","white"];
-var row1Color=["white","white","white","white","white","white","white"];
-var row2Color=["white","white","white","white","white","white","white"];
-var row3Color=["white","white","white","white","white","white","white"];
-var row4Color=["white","white","white","white","white","white","white"];
-var row5Color=["white","white","white","white","white","white","white"];
-
+// game table with default background-color white
 var board=["white","white","white","white","white","white","white",
-                "white","white","white","white","white","white","white",
-                "white","white","white","white","white","white","white",
-                "white","white","white","white","white","white","white",
-                "white","white","white","white","white","white","white",
-                "white","white","white","white","white","white","white",
+            "white","white","white","white","white","white","white",
+            "white","white","white","white","white","white","white",
+            "white","white","white","white","white","white","white",
+            "white","white","white","white","white","white","white",
+            "white","white","white","white","white","white","white",
             ]
-       
-
-
-var moves=[];
-
-var colorOrder=[];
+var movesIndex=[];
 
 function takeback(){
-   
-    var undoId=moves.pop();
-    colorOrder.pop();
-    document.getElementById(undoId).style.setProperty("background-color","white");
+    var undoIndex=movesIndex.pop();
+    tableCells[undoIndex].style.setProperty("background-color","white");
+    board[undoIndex]="white";
     slotNum++;
-    for(var i=0;i<tableCells.length;i++){
-        var slotId=tableCells[i].getAttribute("id");
-        if(undoId==slotId){
-            index=i;
-            break;
-        }
-    }
-    colNum=index%7;
     switch(colNum){
         case 0:
-            col0AvlSpot++
-            col0Color.pop()
-			//console.log(colNum, col0AvlSpot);
-			gameBoard.col0[col0AvlSpot-1]="white";
+            gameBoard.col0[rowNum]="white";
             break;
         case 1:
-            col1AvlSpot++
-            col1Color.pop()
-			console.log(colNum);
-			gameBoard.col1[col1AvlSpot-1]="white";
+            gameBoard.col1[rowNum]="white";
             break;
         case 2:
-            col2AvlSpot++
-            col2Color.pop()
-		gameBoard.col2[col2AvlSpot-1]="white";
+            gameBoard.col2[rowNum]="white";
             break;
         case 3:
-            col3AvlSpot++
-            col3Color.pop()
-			gameBoard.col3[col3AvlSpot-1]="white";
+            gameBoard.col3[rowNum]="white";
             break;
         case 4:
-            col4AvlSpot++
-            col4Color.pop()
-			gameBoard.col4[co40AvlSpot-1]="white";
+            gameBoard.col4[rowNum]="white";
             break;
         case 5:
-            col5AvlSpot++
-            col5Color.pop()
-			gameBoard.col5[col5AvlSpot-1]="white";
+            gameBoard.col5[rowNum]="white";
             break;
         case 6:
-            col6AvlSpot++
-            col6Color.pop()
-			gameBoard.col6[col6AvlSpot-1]="white";
+            gameBoard.col6[rowNum]="white";
             break;
         default:
-            break;
-    }
-    rowNum=Math.floor(index/7);
-    var color="white"
-    switch(rowNum){
-        case 0:
-            row0Color[colNum]=color;
-            break;
-        case 1:
-            row1Color[colNum]=color;
-            break;
-        case 2:
-            row2Color[colNum]=color;
-            break;
-        case 3:
-            row3Color[colNum]=color;
-            break;
-        case 4:
-            row4Color[colNum]=color;
-            break;
-        case 5:
-            row5Color[colNum]=color;
-            break;
-        default:
-            return; 
+            return;
     }
 }
 function reset(){
@@ -134,28 +56,6 @@ function reset(){
         tableCells[i].style.setProperty("background-color","white")
     }
     slotNum=42;
-    col0AvlSpot=6;
-    col1AvlSpot=6;
-    col2AvlSpot=6;
-    col3AvlSpot=6;
-    col4AvlSpot=6;
-    col5AvlSpot=6;
-    col6AvlSpot=6;
-
-    col0Color=[];
-    col1Color=[];
-    col2Color=[];
-    col3Color=[];
-    col4Color=[];
-    col5Color=[];
-    col6Color=[];
-
-    row0Color=["white","white","white","white","white","white","white"];
-    row1Color=["white","white","white","white","white","white","white"];
-    row2Color=["white","white","white","white","white","white","white"];
-    row3Color=["white","white","white","white","white","white","white"];
-    row4Color=["white","white","white","white","white","white","white"];
-    row5Color=["white","white","white","white","white","white","white"];
 
     board=["white","white","white","white","white","white","white",
             "white","white","white","white","white","white","white",
@@ -165,8 +65,8 @@ function reset(){
             "white","white","white","white","white","white","white",
             ]
 
-    moves=[];
-    colorOrder=[];
+    movesIndex=[];
+ 
 	for(var i =0 ; i<6 ; i++){
 		gameBoard.col0[i]="white";
 		gameBoard.col1[i]="white";
@@ -175,9 +75,7 @@ function reset(){
 		gameBoard.col4[i]="white";
 		gameBoard.col5[i]="white";
 		gameBoard.col6[i]="white";
-
-	}
-
+    }
 } 
 function myFunction(event) { 
     
@@ -191,145 +89,160 @@ function myFunction(event) {
         }
     }
     colNum=index%7;
-    rowNum=Math.floor(index/7);
+   // rowNum=Math.floor(index/7);
     switch(colNum){
         case 0:
-            var slot=col0[col0AvlSpot-1].getAttribute("id");
-            currentSlotId=col0[col0AvlSpot-1].getAttribute("id");
-            moves.push(currentSlotId);
-            if(slotNum%2==0){
-                document.getElementById(slot).style.setProperty("background-color","red");
-				gameBoard.col0[col0AvlSpot-1]="red";
-                slotNum--;
-                col0AvlSpot--;
-                colorOrder.push("red");
-            }
-            else{
-                document.getElementById(slot).style.setProperty("background-color","yellow");
-				gameBoard.col0[col0AvlSpot-1]="yellow";
-                slotNum--;
-                col0AvlSpot--;
-                colorOrder.push("yellow")
+            for(i=5;i>=0;i--){
+                if(board[(i*7)]=="white"){
+                    if(slotNum%2==0){
+                        board[(i*7)]="red";
+                        tableCells[(i*7)].style.setProperty("background-color","red");
+                        color="red";
+                        gameBoard.col0[i]="red";
+                    }
+                    else{
+                        board[(i*7)]="yellow";
+                        tableCells[(i*7)].style.setProperty("background-color","yellow");
+                        color="yellow";
+                        gameBoard.col0[i]="yellow";
+                    }
+                    rowNum=i;
+                    slotNum--;
+                    break;
+                }
             }
             break;
         case 1:
-            var slot=col1[col1AvlSpot-1].getAttribute("id");
-            currentSlotId=col1[col1AvlSpot-1].getAttribute("id");
-            moves.push(currentSlotId);
-            if(slotNum%2==0){
-                document.getElementById(slot).style.setProperty("background-color","red");
-				gameBoard.col1[col1AvlSpot-1]="red";
-                slotNum--;
-                col1AvlSpot--;
-                colorOrder.push("red");
-				
-            }
-            else{
-                document.getElementById(slot).style.setProperty("background-color","yellow");
-				gameBoard.col1[col1AvlSpot-1]="yellow";
-                slotNum--;
-                col1AvlSpot--;
-                colorOrder.push("yellow")
+            for(i=5;i>=0;i--){
+                if(board[(i*7)+1]=="white"){
+                    if(slotNum%2==0){
+                        board[(i*7)+1]="red";
+                        tableCells[(i*7)+1].style.setProperty("background-color","red");
+                        color="red";
+                        gameBoard.col1[i]="red";
+                    }
+                    else{
+                        board[(i*7)+1]="yellow";
+                        tableCells[(i*7)+1].style.setProperty("background-color","yellow");
+                        color="yellow";
+                        gameBoard.col1[i]="yellow";
+                    }
+                    rowNum=i;
+                    slotNum--;
+                    break;
+                }
             }
             break;
         case 2:
-            var slot=col2[col2AvlSpot-1].getAttribute("id");
-            currentSlotId=col2[col2AvlSpot-1].getAttribute("id");
-            moves.push(currentSlotId);
-            if(slotNum%2==0){
-                document.getElementById(slot).style.setProperty("background-color","red");
-				gameBoard.col2[col2AvlSpot-1]="red";
-                slotNum--;
-                col2AvlSpot--;
-                colorOrder.push("red");
-            }
-            else{
-                document.getElementById(slot).style.setProperty("background-color","yellow");
-				gameBoard.col2[col2AvlSpot-1]="yellow";
-                slotNum--;
-                col2AvlSpot--;
-                colorOrder.push("yellow")
+            for(i=5;i>=0;i--){
+                if(board[(i*7)+2]=="white"){
+                    if(slotNum%2==0){
+                        board[(i*7)+2]="red";
+                        tableCells[(i*7)+2].style.setProperty("background-color","red");
+                        color="red";
+                        gameBoard.col2[i]="red";
+                    }
+                    else{
+                        board[(i*7)+2]="yellow";
+                        tableCells[(i*7)+2].style.setProperty("background-color","yellow");
+                        color="yellow";
+                        gameBoard.col2[i]="yellow";
+                    }
+                    rowNum=i;
+                    slotNum--;
+                    break;
+                }
             }
             break;
         case 3:
-            var slot=col3[col3AvlSpot-1].getAttribute("id");
-            currentSlotId=col3[col3AvlSpot-1].getAttribute("id");
-            moves.push(currentSlotId);
-            if(slotNum%2==0){
-                document.getElementById(slot).style.setProperty("background-color","red");
-				gameBoard.col3[col3AvlSpot-1]="red";
-                slotNum--;
-                col3AvlSpot--;
-                colorOrder.push("red");
-            }
-            else{
-                document.getElementById(slot).style.setProperty("background-color","yellow");
-				gameBoard.col3[col3AvlSpot-1]="yellow";
-                slotNum--;
-                col3AvlSpot--;
-                colorOrder.push("yellow")
+            for(i=5;i>=0;i--){
+                if(board[(i*7)+3]=="white"){
+                    if(slotNum%2==0){
+                        board[(i*7)+3]="red";
+                        tableCells[(i*7)+3].style.setProperty("background-color","red");
+                        color="red";
+                        gameBoard.col3[i]="red";
+                    }
+                    else{
+                        board[(i*7)+3]="yellow";
+                        tableCells[(i*7)+3].style.setProperty("background-color","yellow");
+                        color="yellow";
+                        gameBoard.col3[i]="yellow";
+                    }
+                    rowNum=i;
+                    slotNum--;
+                    break;
+                }
             }
             break;
         case 4:
-            var slot=col4[col4AvlSpot-1].getAttribute("id");
-            currentSlotId=col4[col4AvlSpot-1].getAttribute("id");
-            moves.push(currentSlotId);
-            if(slotNum%2==0){
-                document.getElementById(slot).style.setProperty("background-color","red");
-				gameBoard.col4[col4AvlSpot-1]="red";
-                slotNum--;
-                col4AvlSpot--;
-                colorOrder.push("red");
-            }
-            else{
-                document.getElementById(slot).style.setProperty("background-color","yellow");
-				gameBoard.col4[col4AvlSpot-1]="yellow";
-                slotNum--;
-                col4AvlSpot--;
-                colorOrder.push("yellow")
+            for(i=5;i>=0;i--){
+                if(board[(i*7)+4]=="white"){
+                    if(slotNum%2==0){
+                        board[(i*7)+4]="red";
+                        tableCells[(i*7)+4].style.setProperty("background-color","red");
+                        color="red";
+                        gameBoard.col4[i]="red";
+                    }
+                    else{
+                        board[(i*7)+4]="yellow";
+                        tableCells[(i*7)+4].style.setProperty("background-color","yellow");
+                        color="yellow";
+                        gameBoard.col4[i]="yellow";
+                    }
+                    rowNum=i;
+                    slotNum--;
+                    break;
+                }
             }
             break;
         case 5:
-            var slot=col5[col5AvlSpot-1].getAttribute("id");
-            currentSlotId=col5[col5AvlSpot-1].getAttribute("id");
-            moves.push(currentSlotId);
-            if(slotNum%2==0){
-                document.getElementById(slot).style.setProperty("background-color","red");
-				gameBoard.col5[col5AvlSpot-1]="red";	
-                slotNum--;
-                col5AvlSpot--;
-                colorOrder.push("red");
-            }
-            else{
-                document.getElementById(slot).style.setProperty("background-color","yellow");
-				gameBoard.col5[col5AvlSpot-1]="yellow";
-                slotNum--;
-                col5AvlSpot--;
-                colorOrder.push("yellow")
+            for(i=5;i>=0;i--){
+                if(board[(i*7)+5]=="white"){
+                    if(slotNum%2==0){
+                        board[(i*7)+5]="red";
+                        tableCells[(i*7)+5].style.setProperty("background-color","red");
+                        color="red";
+                        gameBoard.col5[i]="red";
+                    }
+                    else{
+                        board[(i*7)+5]="yellow";
+                        tableCells[(i*7)+5].style.setProperty("background-color","yellow");
+                        color="yellow";
+                        gameBoard.col5[i]="yellow";
+                    }
+                    rowNum=i;
+                    slotNum--;
+                    break;
+                }
             }
             break;
         case 6:
-            var slot=col6[col6AvlSpot-1].getAttribute("id");
-            currentSlotId=col6[col6AvlSpot-1].getAttribute("id");
-            moves.push(currentSlotId);
-            if(slotNum%2==0){
-                document.getElementById(slot).style.setProperty("background-color","red");
-				gameBoard.col6[col6AvlSpot-1]="red";
-                slotNum--;
-                col6AvlSpot--;
-                colorOrder.push("red");
-            }
-            else{
-                document.getElementById(slot).style.setProperty("background-color","yellow");
-				gameBoard.col6[col6AvlSpot-1]="yellow";
-                slotNum--;
-                col6AvlSpot--;
-                colorOrder.push("yellow")
+            for(i=5;i>=0;i--){
+                if(board[(i*7)+6]=="white"){
+                    if(slotNum%2==0){
+                        board[(i*7)+6]="red";
+                        tableCells[(i*7)+6].style.setProperty("background-color","red");
+                        color="red";
+                        gameBoard.col6[i]="red";
+                    }
+                    else{
+                        board[(i*7)+6]="yellow";
+                        tableCells[(i*7)+6].style.setProperty("background-color","yellow");
+                        color="yellow";
+                        gameBoard.col6[i]="yellow";
+                    }
+                    rowNum=i;
+                    slotNum--;
+                    break;
+                }
             }
             break;
         default:
-            return; 
+            return;
     }
+    movesIndex.push((rowNum*7)+colNum);
+    console.log(gameBoard);
 }
 function isWin(){
     checkVertically();
@@ -337,162 +250,99 @@ function isWin(){
     checkDiagonally();
 }
 function checkVertically(){
-    var slotEle=document.getElementById(currentSlotId);
-    var color=slotEle.style.getPropertyValue("background-color");
-    //if(slotNum===0) alert("Draw play again!");
+// when slotNum == 0 means in the gametable there is no more slot can be place a checker.
+// so it's draw
     if(slotNum==0){
-        window.confirm("It is draw! Start a new game");                
+        window.confirm("It's a draw! Play again?");                
         if( Button.confirm() ) restart();
         else return;
     }
-    // Check vertical
-    switch(colNum){
-        case 0:
-            col0Color.push(color);
-            break;
-        case 1:
-            col1Color.push(color);
-            break;
-        case 2:
-            col2Color.push(color);
-            break;
-        case 3:
-            col3Color.push(color);
-            break;
-        case 4:
-            col4Color.push(color);
-            break;
-        case 5:
-            col5Color.push(color);
-            break;
-        case 6:
-            col6Color.push(color);
-            break;
-        default:
-            return; 
-    }
+    // Check vertical 
+    // since we know the column number that the checker is place
+    // so use switch loop to check that column instead of all columns in the table.-
     switch(colNum){
         case 0:
             colorMatched=0;
-            for(var i=1;i<=col0Color.length;i++){
-                var temp=col0[6-i].getAttribute("id");
-                var colorChecking=document.getElementById(temp).style.getPropertyValue("background-color");
-                if(color==colorChecking) colorMatched++;
+            for(var i=5;i>=0;i--){
+                if(board[(i*7)]==color) colorMatched++;
                 else colorMatched=0;
+                if(colorMatched==4) break;
             }
             break;
         case 1:
             colorMatched=0;
-            for(i=1;i<=col1Color.length;i++){
-                var temp=col1[6-i].getAttribute("id");
-                var colorChecking=document.getElementById(temp).style.getPropertyValue("background-color");
-                if(color==colorChecking) colorMatched++;
+            for(i=5;i>=0;i--){
+                if(board[(i*7)+1]==color) colorMatched++;
                 else colorMatched=0;
+                if(colorMatched==4) break;
             }
             break;
         case 2:
             colorMatched=0;
-            for(i=1;i<=col2Color.length;i++){
-                var temp=col2[6-i].getAttribute("id");
-                var colorChecking=document.getElementById(temp).style.getPropertyValue("background-color");
-                if(color==colorChecking) colorMatched++;
+            for(i=5;i>=0;i--){
+                if(board[(i*7)+2]==color) colorMatched++;
                 else colorMatched=0;
+                if(colorMatched==4) break;
             }
             break;
         case 3:
             colorMatched=0;
-            for(i=1;i<=col3Color.length;i++){
-                var temp=col3[6-i].getAttribute("id");
-                var colorChecking=document.getElementById(temp).style.getPropertyValue("background-color");
-                if(color==colorChecking) colorMatched++;
+            for(i=5;i>=0;i--){
+                if(board[(i*7)+3]==color) colorMatched++;
                 else colorMatched=0;
+                if(colorMatched==4) break;
             }
             break;
         case 4:
             colorMatched=0;
-            for(i=1;i<=col4Color.length;i++){
-                var temp=col4[6-i].getAttribute("id");
-                var colorChecking=document.getElementById(temp).style.getPropertyValue("background-color");
-                if(color==colorChecking) colorMatched++;
+            for(i=5;i>=0;i--){
+                if(board[(i*7)+4]==color) colorMatched++;
                 else colorMatched=0;
+                if(colorMatched==4) break;
             }
             break;
         case 5:
             colorMatched=0;
-            for(i=1;i<=col5Color.length;i++){
-                var temp=col5[6-i].getAttribute("id");
-                var colorChecking=document.getElementById(temp).style.getPropertyValue("background-color");
-                if(color==colorChecking) colorMatched++;
+            for(i=5;i>=0;i--){
+               
+                if(board[(i*7)+5]==color) colorMatched++;
                 else colorMatched=0;
+                if(colorMatched==4) break;
             }
             break;
         case 6:
             colorMatched=0;
-            for(i=1;i<=col6Color.length;i++){
-                var temp=col6[6-i].getAttribute("id");
-                var colorChecking=document.getElementById(temp).style.getPropertyValue("background-color");
-                if(color==colorChecking) colorMatched++;
+            for(i=5;i>=0;i--){
+                if(board[(i*7)+6]==color) colorMatched++;
                 else colorMatched=0;
+                if(colorMatched==4) break;
             }
             break;
         default:
             return; 
     }
     if(colorMatched==4&&(color=="red"||color=="yellow")){
-       // window.alert(color+" wins the game!");
         console.log("Vertical 4 in a row!");
-        var val=window.confirm("It is "+color+" wins the game! Start a new game?")
+        var val=window.confirm("The "+color+" player wins! Start a new game?")
         if(val==true) restart();
         else return;
+       
     }
 }
 function checkHorizontally(){
-    var slotEle=document.getElementById(currentSlotId);
-    var color=slotEle.style.getPropertyValue("background-color");
-  //  if(slotNum===0) alert("Draw play again!");
-    for(var i=0;i<tableCells.length;i++){
-        var slotId=tableCells[i].getAttribute("id");
-        if(currentSlotId==slotId){
-            index=i;
-            break;
-        }
-    }
-    rowNum=Math.floor(index/7);
-    switch(rowNum){
-        case 0:
-            row0Color[colNum]=color;
-            break;
-        case 1:
-            row1Color[colNum]=color;
-            break;
-        case 2:
-            row2Color[colNum]=color;
-            break;
-        case 3:
-            row3Color[colNum]=color;
-            break;
-        case 4:
-            row4Color[colNum]=color;
-            break;
-        case 5:
-            row5Color[colNum]=color;
-            break;
-        default:
-            return; 
-    }
     switch(rowNum){
         case 0:
             colorMatched=0;
             for(i=0;i<7;i++){
-                if(color==row0Color[i]) colorMatched++;
+                if(board[i]==color) colorMatched++;
                 else colorMatched=0;
                 if(colorMatched==4) break;
             }
             break;
         case 1:
             colorMatched=0;
-            for(i=0;i<7;i++){
-                if(color==row1Color[i]) colorMatched++;
+            for(var i=0;i<7;i++){
+                if(board[i+7]==color) colorMatched++;
                 else colorMatched=0;
                 if(colorMatched==4) break;
             }
@@ -500,7 +350,7 @@ function checkHorizontally(){
         case 2:
             colorMatched=0;
             for(i=0;i<7;i++){
-                if(color==row2Color[i]) colorMatched++;
+                if(board[i+14]==color) colorMatched++;
                 else colorMatched=0;
                 if(colorMatched==4) break;
             }
@@ -508,7 +358,7 @@ function checkHorizontally(){
         case 3:
             colorMatched=0;
             for(i=0;i<7;i++){
-                if(color==row3Color[i]) colorMatched++;
+                if(board[i+21]==color) colorMatched++;
                 else colorMatched=0;
                 if(colorMatched==4) break;
             }
@@ -516,7 +366,7 @@ function checkHorizontally(){
         case 4:
             colorMatched=0;
             for(i=0;i<7;i++){
-                if(color==row4Color[i]) colorMatched++;
+                if(board[i+28]==color) colorMatched++;
                 else colorMatched=0;
                 if(colorMatched==4) break;
             }
@@ -524,7 +374,7 @@ function checkHorizontally(){
         case 5:
             colorMatched=0;
             for(i=0;i<7;i++){
-                if(color==row5Color[i]) colorMatched++;
+                if(board[i+35]==color) colorMatched++;
                 else colorMatched=0;
                 if(colorMatched==4) break;
             }
@@ -533,9 +383,8 @@ function checkHorizontally(){
             return; 
     }
     if(colorMatched==4&&(color=="red"||color=="yellow")){
-      //  window.alert(color+" wins the game!");
-      console.log("Horizantal 4 in a row!");
-        var val=window.confirm("It is "+color+" wins the game! Start a new game?")
+        console.log("Horizantal 4 in a row!");
+        var val=window.confirm("The "+color+" player wins! Play again?")
         if(val==true) restart();
         else return;
     }
@@ -544,142 +393,79 @@ function checkDiagonally(){
     
     var diagonalSet=[]; //  represent \
     var diagonalSet2=[]; // represent /
-    var slotEle=document.getElementById(currentSlotId);
-    var color=slotEle.style.getPropertyValue("background-color");
-    for(i=0;i<tableCells.length;i++){
-        var slotId=tableCells[i].getAttribute("id");
-        if(currentSlotId==slotId){
-            index=i;
-            break;
-        }
-    }
-    board[index]=color;
     //  \ diagonal with given index
-    colNum=index%7;
-    rowNum=Math.floor(index/7);
-    var temp=index;
-    while(rowNum>=0&&colNum>=0){
-        diagonalSet.unshift(temp)
-        rowNum--;
-        colNum--;
-        temp-=8;
+    var idx=(rowNum*7)+colNum;
+    var tempRow=rowNum;
+    var tempCol=colNum;
+    while(tempRow>=0&&tempCol>=0){
+        diagonalSet.unshift(idx);
+        tempRow--;
+        tempCol--;
+        idx-=8;
     }
-    var temp=index+8;
-    colNum=(index%7)+1;
-    rowNum=(Math.floor(index/7))+1;
-    while(rowNum<=5&&colNum<=6){
-        diagonalSet.push(temp);
-        colNum++;
-        rowNum++;
-        temp+=8;
-    }  
-    // / diagonal with given index
-    colNum=index%7;
-    rowNum=Math.floor(index/7);
-    var temp=index;
-    while(rowNum>=0&&colNum<=6){
-        diagonalSet2.unshift(temp)
-        rowNum--;
-        colNum++;
-        temp-=6;
-    }
-    var temp=index+6;
-    colNum=(index%7)+1;
-    rowNum=(Math.floor(index/7))+1;
-    while(rowNum<=5&&colNum>=0){
-        diagonalSet2.push(temp);
-        colNum--;
-        rowNum++;
-        temp+=6;
+    idx=(rowNum*7)+colNum+8;
+    tempRow=rowNum+1;
+    tempCol=colNum+1;
+    while(tempRow<=5&&tempCol<=6){
+        diagonalSet.push(idx);
+        tempCol++;
+        tempRow++;
+        idx+=8;
     } 
-    //  \ diagonal check
+    // / diagonal with given index
+    idx=(rowNum*7)+colNum;
+    tempRow=rowNum;
+    tempCol=colNum;
+    while(tempRow>=0&&tempCol<=6){
+        diagonalSet2.unshift(idx)
+        tempRow--;
+        tempCol++;
+        idx-=6;
+    }
+    idx=(rowNum*7)+colNum+6;
+    tempRow=rowNum+1;
+    tempCol=colNum+1;
+    while(tempRow<=5&&tempCol>=0){
+        diagonalSet2.push(idx);
+        tempCol--;
+        tempRow++;
+        idx+=6;
+    } 
+ //  \ diagonal check
     colorMatched=0;
-    for(i=0;i<diagonalSet.length;i++){
+    for(var i=0;i<diagonalSet.length;i++){
         if(color==board[diagonalSet[i]]) colorMatched++;
         else colorMatched=0;
         if(colorMatched==4) break;
     }
     if(colorMatched==4&&(color=="red"||color=="yellow")){
-    //    alert(color+" wins the game!");
         console.log("Left diagonal 4 in a row!");
-        var val=window.confirm("It is "+color+" wins the game! Start a new game?")
+        var val=window.confirm("The "+color+" player wins! Play again?")
         if(val==true) restart();
         else return;
     } 
+    
     // / diagonal check
-    colorMatched=0;
-    for(var i=0;i<diagonalSet2.length;i++){
+    for(i=0;i<diagonalSet2.length;i++){
         if(color==board[diagonalSet2[i]]) colorMatched++;
         else colorMatched=0;
         if(colorMatched==4) break;
     }
     if(colorMatched==4&&(color=="red"||color=="yellow")){
-    //     alert(color+" wins the game!");
+       
         console.log("Right diagonal 4 in a row!");
-        var val=window.confirm("It is "+color+" wins the game! Start a new game?")
+        var val=window.confirm("The "+color+" player wins! Start a new game?")
         if(val==true) restart();
         else return;
     }
 }
 function restart(){
-    console.log("Restart function begins");
-    for(var i=0;i<tableCells.length;i++){
-        tableCells[i].style.setProperty("background-color","white")
-    }
-	  
-    slotNum=42;
-    col0AvlSpot=6;
-    col1AvlSpot=6;
-    col2AvlSpot=6;
-    col3AvlSpot=6;
-    col4AvlSpot=6;
-    col5AvlSpot=6;
-    col6AvlSpot=6;
+  location.reload();
 
-    col0Color=[];
-    col1Color=[];
-    col2Color=[];
-    col3Color=[];
-    col4Color=[];
-    col5Color=[];
-    col6Color=[];
-	
-    row0Color=["white","white","white","white","white","white","white"];
-    row1Color=["white","white","white","white","white","white","white"];
-    row2Color=["white","white","white","white","white","white","white"];
-    row3Color=["white","white","white","white","white","white","white"];
-    row4Color=["white","white","white","white","white","white","white"];
-    row5Color=["white","white","white","white","white","white","white"];
-
-    board=["white","white","white","white","white","white","white",
-            "white","white","white","white","white","white","white",
-            "white","white","white","white","white","white","white",
-            "white","white","white","white","white","white","white",
-            "white","white","white","white","white","white","white",
-            "white","white","white","white","white","white","white",
-            ]
-    moves=[];
-    colorOrder=[];
-    colorMatched=0;
   
-for( var i = 0 ; i<6 ; i++){
-      				gameBoard.col0[i]="white";
-            	gameBoard.col1[i]="white";
-      				gameBoard.col2[i]="white";
-      				gameBoard.col3[i]="white";
-      				gameBoard.col4[i]="white";
-      				gameBoard.col5[i]="white";
-              gameBoard.col6[i]="white";
 
-    }
-   // color="";
+  
 }
-/*function showMove(){
-    console.log("Testing..... ");
-    for(var i=1;i<=moves.length;i++){
-        console.log("Move : "+i+" "+moves[i-1]+" with color: "+colorOrder[i-1]);
-    }
-}*/
 var gameBoard={
     "col0":[ "white", "white", "white", "white", "white", "white" ],
 	  "col1":[ "white", "white", "white", "white", "white", "white" ],
@@ -689,124 +475,85 @@ var gameBoard={
     "col5":["white",  "white", "white", "white", "white", "white"],
     "col6":[ "white","white",  "white", "white", "white", "white" ]
 }
+
 console.log(gameBoard);
-//var name = "SavedB";
-var test  ="test";
+
 function save(){
-  var name = slotNum.toString() + col0AvlSpot.toString() + col1AvlSpot.toString() +col2AvlSpot.toString() +col3AvlSpot.toString() +col4AvlSpot.toString() +col5AvlSpot.toString() + col6AvlSpot.toString() 
-  var savedBoard = JSON.stringify(gameBoard);
-  console.log(savedBoard);
-  document.cookie = test + encodeURIComponent(name+savedBoard); "max-age=" + 30*24*60*60;
-}
-function restore(){
-  console.log(getCookie(name));
-  getCookie(name);
-}
-function getCookie(test) {
-console.log(decodeURIComponent(document.cookie));
-  var original = decodeURIComponent(document.cookie);
-  var newString = original.toString();
-  newString = newString.replace(/[\[\]"]+/g, '');
-  newString = newString.replace(/,/g, " ");
-  newString = newString.replace(/col0:/g,'');
-  newString = newString.replace(/col1:/g,'');
-  newString = newString.replace(/col2:/g,'');
-  newString = newString.replace(/col3:/g,'');
-  newString = newString.replace(/col4:/g,'');
-  newString = newString.replace(/col5:/g,'');
-  newString = newString.replace(/col6:/g,'');
-  newString = newString.replace("test", '');
-    newString = newString.replace("{", '');
-
-  newString = newString.replace("}", '');
-  slotNum = parseInt(newString.substring(0, 2),10);
-  col0AvlSpot = parseInt(newString.substring(2,3),10);
-  console.log(col0AvlSpot);
-  col1AvlSpot = parseInt(newString.substring(3,4),10);
-  col2AvlSpot = parseInt(newString.substring(4,5),10);
-  col3AvlSpot = parseInt(newString.substring(5,6),10);
-  col4AvlSpot = parseInt(newString.substring(6,7),10);
-  col5AvlSpot = parseInt(newString.substring(7,8),10);
-  col6AvlSpot = parseInt(newString.substring(8,9),10);
-  newString = newString.substring(9,newString.length );
-  newString = newString.split(" ");
-  console.log(newString);
-        tableCells[0].style.setProperty("background-color",newString[0])
-        tableCells[1].style.setProperty("background-color",newString[6])
-        tableCells[2].style.setProperty("background-color",newString[12])
-        tableCells[3].style.setProperty("background-color",newString[18])
-        tableCells[4].style.setProperty("background-color",newString[24])
-        tableCells[5].style.setProperty("background-color",newString[30])
-        tableCells[6].style.setProperty("background-color",newString[36])
-        tableCells[7].style.setProperty("background-color",newString[1])
-        tableCells[8].style.setProperty("background-color",newString[7])
-        tableCells[9].style.setProperty("background-color",newString[13])
-        tableCells[10].style.setProperty("background-color",newString[19])
-        tableCells[11].style.setProperty("background-color",newString[25])
-        tableCells[12].style.setProperty("background-color",newString[31])
-        tableCells[13].style.setProperty("background-color",newString[37])
-        tableCells[14].style.setProperty("background-color",newString[2])
-        tableCells[15].style.setProperty("background-color",newString[8])
-        tableCells[16].style.setProperty("background-color",newString[14])
-        tableCells[17].style.setProperty("background-color",newString[20])
-        tableCells[18].style.setProperty("background-color",newString[26])
-        tableCells[19].style.setProperty("background-color",newString[32])
-        tableCells[20].style.setProperty("background-color",newString[38])
-        tableCells[21].style.setProperty("background-color",newString[3])
-        tableCells[22].style.setProperty("background-color",newString[9])
-        tableCells[23].style.setProperty("background-color",newString[15])
-        tableCells[24].style.setProperty("background-color",newString[21])
-        tableCells[25].style.setProperty("background-color",newString[27])
-        tableCells[26].style.setProperty("background-color",newString[33])
-        tableCells[27].style.setProperty("background-color",newString[39])
-        tableCells[28].style.setProperty("background-color",newString[4])
-        tableCells[29].style.setProperty("background-color",newString[10])
-        tableCells[30].style.setProperty("background-color",newString[16])
-        tableCells[31].style.setProperty("background-color",newString[22])
-        tableCells[32].style.setProperty("background-color",newString[28])
-        tableCells[33].style.setProperty("background-color",newString[34])
-        tableCells[34].style.setProperty("background-color",newString[40])
-        tableCells[35].style.setProperty("background-color",newString[5])
-        tableCells[36].style.setProperty("background-color",newString[11])
-        tableCells[37].style.setProperty("background-color",newString[17])
-        tableCells[38].style.setProperty("background-color",newString[23])
-        tableCells[39].style.setProperty("background-color",newString[29])
-        tableCells[40].style.setProperty("background-color",newString[35])
-        tableCells[41].style.setProperty("background-color",newString[41])
-    for( var i = 0 ; i<6 ; i++){
-      				gameBoard.col0[i]=newString[i];
-            	gameBoard.col1[i]=newString[i+6];
-      				gameBoard.col2[i]=newString[i+12];
-      				gameBoard.col3[i]=newString[i+18];
-      				gameBoard.col4[i]=newString[i+24];
-      				gameBoard.col5[i]=newString[i+30];
-              gameBoard.col6[i]=newString[i+36];
-
+    
+  var dataStr = encodeURIComponent(JSON.stringify(gameBoard));
+   var gameSaved = {
+        numOfSlot: 0,
+        gameCol0 : [],
+        gameCol1 : [],
+        gameCol2 : [],
+        gameCol3 : [],
+        gameCol4 : [],
+        gameCol5 : [],
+        gameCol6 : [],
+        myBoard : []
     }
-    // new code add update the board for checkDiagonal
-    for(i=0;i<42;i++){
-        board[i]=tableCells[i].style.getPropertyValue("background-color")//
+    gameSaved.numOfSlot = slotNum;
+    gameSaved.gameCol0 = gameBoard.col0;
+    gameSaved.gameCol1 = gameBoard.col1;
+    gameSaved.gameCol2 = gameBoard.col2;
+    gameSaved.gameCol3 = gameBoard.col3;
+    gameSaved.gameCol4 = gameBoard.col4;
+    gameSaved.gameCol5 = gameBoard.col5;
+    gameSaved.gameCol6 = gameBoard.col6;
+    gameSaved.myBoard = board;
+    var a = document.createElement("a");
+    var download = new Blob([JSON.stringify(gameSaved)], {
+        type: 'file'
+    });
+    a.href = URL.createObjectURL(download);
+    a.download = 'Connect4Saved.JSON';
+    a.click();
+}
+(function(){
+    
+    function onChange(event) {
+        var reader = new FileReader();
+        reader.onload = onReaderLoad;
+        reader.readAsText(event.target.files[0]);
+    }
+
+    function onReaderLoad(event){
+        console.log(event.target.result);
+        var obj = JSON.parse(event.target.result);
+        setData(obj.numOfSlot, obj.gameCol0, obj.gameCol1, obj.gameCol2 , obj.gameCol3, obj.gameCol4 ,obj.gameCol5, obj.gameCol6, obj.myBoard);
     }
     
-  // for horizontal check
-    for(i=0;i<7;i++){
-        row0Color[i]=tableCells[i].style.getPropertyValue("background-color");
-        row1Color[i]=tableCells[i+7].style.getPropertyValue("background-color");
-        row2Color[i]=tableCells[i+14].style.getPropertyValue("background-color");
-        row3Color[i]=tableCells[i+21].style.getPropertyValue("background-color");
-        row4Color[i]=tableCells[i+28].style.getPropertyValue("background-color");
-        row5Color[i]=tableCells[i+35].style.getPropertyValue("background-color");
-    }
-    for(i=41;i>=0;i--){
-        var saveColor = tableCells[i].style.getPropertyValue("background-color");
-        console.log(saveColor);
-        if(saveColor!="white"&&(i%7==6)) col6Color.push(saveColor);
-        if(saveColor!="white"&&(i%7==5)) col5Color.push(saveColor);
-        if(saveColor!="white"&&(i%7==4)) col4Color.push(saveColor);
-        if(saveColor!="white"&&(i%7==3)) col3Color.push(saveColor);
-        if(saveColor!="white"&&(i%7==2)) col2Color.push(saveColor);
-        if(saveColor!="white"&&(i%7==1)) col1Color.push(saveColor);
-        if(saveColor!="white"&&(i%7==0)) col0Color.push(saveColor);
+    function setData(slotN, mCol0, mCol1, mCol2, mCol3, mCol4, mCol5, mCol6, myBoard){
+      var NslotNum = slotN;
+      var Ncol0 = mCol0;
+      var Ncol1 = mCol1;
+      var Ncol2 = mCol2;
+      var Ncol3 = mCol3;
+      var Ncol4 = mCol4;
+      var Ncol5 = mCol5;
+      var Ncol6 = mCol6;
+      var Nboard = myBoard;
+      update(NslotNum, Ncol0, Ncol1, Ncol2, Ncol3, Ncol4, Ncol5, Ncol6, Nboard);
     }
   
-    }
+    document.getElementById('file').addEventListener('change', onChange);
+
+}());
+function update(NslotNum, Ncol0, Ncol1, Ncol2, Ncol3, Ncol4, Ncol5, Ncol6, Nboard){
+  slotNum = NslotNum;
+  gameBoard.gameCol0 = Ncol0;
+  gameBoard.gameCol1 = Ncol1;
+  gameBoard.gameCol2 = Ncol2;
+  gameBoard.gameCol3 = Ncol3;
+  gameBoard.gameCol4 = Ncol4;
+  gameBoard.gameCol5 = Ncol5;
+  gameBoard.gameCol6 = Ncol6;
+  board= Nboard;
+  for(var i=0;i<42;i++){
+    tableCells[i].style.setProperty("background-color", board[i])
+  }
+}
+
+
+
+    
