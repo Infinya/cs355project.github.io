@@ -104,6 +104,12 @@ if( count($errors) == 0 )
 
     $_SESSION['UserName'] = $name ;
     $_SESSION['success'] = "You are now signed Up" ;
+   $sql = "CREATE TABLE `".$email."` (
+       redWin int ,
+       yellowWin int,
+       gameJson VARCHAR(5000)
+     )";
+
 
            /* echo '<script type="text/javascript">';
             echo 'alert("You are now signed up!!!");';
