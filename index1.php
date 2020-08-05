@@ -1,4 +1,5 @@
 // color represents the color of checker that been place to the slot at this turn.
+<script>
 var color="";
 // all table cell elements total 42 
 var tableCells=document.getElementsByTagName("td");
@@ -615,7 +616,5 @@ function update(NslotNum, Ncol0, Ncol1, Ncol2, Ncol3, Ncol4, Ncol5, Ncol6, Nboar
     tableCells[i].style.setProperty("background-color", board[i])
   }
 }
-
-
-
+</script>
     
