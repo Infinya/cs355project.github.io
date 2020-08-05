@@ -32,8 +32,8 @@
         <li class="dropdown">
           <a href="#" class="dropbtn">Login/Sign Up</a>
           <div class="dropdown-content">
-            <a onclick="document.getElementById('id01').style.display='block'">Login</a>
-            <a onclick="document.getElementById('id02').style.display='block'">Sign Up</a>
+             <a href="login.php" >Login</a>
+             <a href="register.php">Register</a>
           </div>
         </li>
       </ul>
@@ -107,55 +107,7 @@
     Upload 
 </label>
 </div>
-  <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php" method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-        
-      <button class="logsig" type="submit">Login</button>
-      
-    </div>
-
-  </form>
-</div>
-<div id="id02" class="modal">
-
-  <form class="modal-content" action="/action_page.php">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-    </div>
-    <div class="container">
-      
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-
-      <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-    
-
-      <div class="clearfix">
-        <button type="submit" class="signupbtn logsig">Sign Up</button>
-      </div>
-    </div>
-  </form>
-</div>
-
-<script>
-// Get the modal
-
-</script>
     <script src="index.js"></script>
 
   </body></html>
