@@ -29,6 +29,7 @@ if(isset($_POST['login']) )
             $_SESSION['success'] = "Logged in Successfully" ;
             
             echo "You are now logged in. Thank you :)" ;
+            echo '<a href = userPage.php> Go to User Page</a>';
             
             
         }
