@@ -324,6 +324,21 @@ function checkVertically(){
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Vertical 4 in a row!");
         var val=window.confirm("The "+color+" player wins! Start a new game?")
+	<?php
+	if ($conn->connect_error) {
+ 		 die();
+		}
+	$trueWin = "<script>document.write(color)</script>"
+
+	if($trueWin=="red"){
+	$sql = "INSERT INTO ".$email." (redWin,yellowWin, gameJson)
+		VALUES (1, 0, '0')";
+    }
+	elseif($trueWin =="yellow"){
+		$sql = "INSERT INTO ".$email." (redWin,yellowWin, gameJson)
+		VALUES (0, 1, '0')
+	}
+	?>
         if(val==true) restart();
         else return;
        
@@ -385,6 +400,21 @@ function checkHorizontally(){
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Horizantal 4 in a row!");
         var val=window.confirm("The "+color+" player wins! Play again?")
+	<?php
+	if ($conn->connect_error) {
+ 		 die();
+		}
+	$trueWin = "<script>document.write(color)</script>"
+
+	if($trueWin=="red"){
+	$sql = "INSERT INTO ".$email." (redWin,yellowWin, gameJson)
+		VALUES (1, 0, '0')";
+    }
+	elseif($trueWin =="yellow"){
+		$sql = "INSERT INTO ".$email." (redWin,yellowWin, gameJson)
+		VALUES (0, 1, '0')
+	}
+	?>
         if(val==true) restart();
         else return;
     }
@@ -441,6 +471,21 @@ function checkDiagonally(){
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Left diagonal 4 in a row!");
         var val=window.confirm("The "+color+" player wins! Play again?")
+	<?php
+	if ($conn->connect_error) {
+ 		 die();
+		}
+	$trueWin = "<script>document.write(color)</script>"
+
+	if($trueWin=="red"){
+	$sql = "INSERT INTO ".$email." (redWin,yellowWin, gameJson)
+		VALUES (1, 0, '0')";
+    }
+	elseif($trueWin =="yellow"){
+		$sql = "INSERT INTO ".$email." (redWin,yellowWin, gameJson)
+		VALUES (0, 1, '0')
+	}
+	?>
         if(val==true) restart();
         else return;
     } 
@@ -454,7 +499,24 @@ function checkDiagonally(){
     if(colorMatched==4&&(color=="red"||color=="yellow")){
        
         console.log("Right diagonal 4 in a row!");
-        var val=window.confirm("The "+color+" player wins! Start a new game?")
+        var val=
+	    
+	    dow.confirm("The "+color+" player wins! Start a new game?")
+	<?php
+	if ($conn->connect_error) {
+ 		 die();
+		}
+	$trueWin = "<script>document.write(color)</script>"
+
+	if($trueWin=="red"){
+	$sql = "INSERT INTO ".$email." (redWin,yellowWin, gameJson)
+		VALUES (1, 0, '0')";
+    }
+	elseif($trueWin =="yellow"){
+		$sql = "INSERT INTO ".$email." (redWin,yellowWin, gameJson)
+		VALUES (0, 1, '0')
+	}
+	?>
         if(val==true) restart();
         else return;
     }
