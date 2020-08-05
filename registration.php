@@ -1,7 +1,7 @@
 <?php
 include('index.php');
 //Login users
-$db = mysqli_connect('mars.cs.qc.cuny.edu' , 'wach8068' , '23018068' , 'wach8068') or die("could not connect to database" ) ;
+$db = mysqli_connect('mars.cs.qc.cuny.edu' , 'duan7325' , '23627325' , 'duan7325') or die("could not connect to database" ) ;
 $email = $_POST['email'] ;
 $password = $_POST['password']  ;
 
