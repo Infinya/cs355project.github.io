@@ -324,7 +324,7 @@ function checkVertically(){
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Vertical 4 in a row!");
         var val=window.confirm("The "+color+" player wins! Start a new game?")
-	<?php
+	/*<?php
 	if ($conn->connect_error) {
  		 die();
 		}
@@ -338,7 +338,7 @@ function checkVertically(){
 		$sql = "INSERT INTO ".$email." (redWin,yellowWin, gameJson)
 		VALUES (0, 1, '0')
 	}
-	?>
+	?>*/
         if(val==true) restart();
         else return;
        
@@ -400,7 +400,7 @@ function checkHorizontally(){
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Horizantal 4 in a row!");
         var val=window.confirm("The "+color+" player wins! Play again?")
-	<?php
+	/*<?php
 	if ($conn->connect_error) {
  		 die();
 		}
@@ -414,7 +414,7 @@ function checkHorizontally(){
 		$sql = "INSERT INTO ".$email." (redWin,yellowWin, gameJson)
 		VALUES (0, 1, '0')
 	}
-	?>
+	?>*/
         if(val==true) restart();
         else return;
     }
@@ -471,7 +471,7 @@ function checkDiagonally(){
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Left diagonal 4 in a row!");
         var val=window.confirm("The "+color+" player wins! Play again?")
-	<?php
+	/*<?php
 	if ($conn->connect_error) {
  		 die();
 		}
@@ -485,7 +485,7 @@ function checkDiagonally(){
 		$sql = "INSERT INTO ".$email." (redWin,yellowWin, gameJson)
 		VALUES (0, 1, '0')
 	}
-	?>
+	?>*/
         if(val==true) restart();
         else return;
     } 
@@ -502,7 +502,7 @@ function checkDiagonally(){
         var val=
 	    
 	    dow.confirm("The "+color+" player wins! Start a new game?")
-	<?php
+	/*<?php
 	if ($conn->connect_error) {
  		 die();
 		}
@@ -516,7 +516,7 @@ function checkDiagonally(){
 		$sql = "INSERT INTO ".$email." (redWin,yellowWin, gameJson)
 		VALUES (0, 1, '0')
 	}
-	?>
+	?>*/
         if(val==true) restart();
         else return;
     }
