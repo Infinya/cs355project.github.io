@@ -7,19 +7,17 @@
   <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" type="text/css" href="logsign.css">
         <script src="logsign.js"></script>
-
   <style>
-
 </style>
 </head>
 <body>
   <div id="topnav">
       <ul>
-	      <li><a href="index.html" target="_balnk">Home</a></li>
-	      <li><a href="history.html" target="_balnk">History</a></li>
-	      <li><a href="rules.html" target="_balnk">Rule</a></li>
-	      <li><a href="bio-page.html" target="_balnk">Meet the Developers</a></li>
-	      <li><a href="contact-us.html" target="_balnk">Contact-us</a></li>
+	      <li><a href="index.php" >Home</a></li>
+	      <li><a href="history.php" >History</a></li>
+	      <li><a href="rules.php" >Rule</a></li>
+	      <li><a href="bio-page.php" >Meet the Developers</a></li>
+	      <li><a href="contact-us.php" >Contact-us</a></li>
 	      <li class="dropdown">
           <a href="#" class="dropbtn">External Links</a>
           <div class="dropdown-content">
@@ -30,12 +28,13 @@
           </div>
         </li>
         <li class="dropdown">
-          <a href="#" class="dropbtn">Login/Sign Up</a>
+          <a href="#" class="dropbtn">Login/Register</a>
           <div class="dropdown-content">
-             <a href="login.php" >Login</a>
-             <a href="register.php">Register</a>
+            <a href="login.php" >Login</a>
+            <a href="register.php">Register</a>
           </div>
         </li>
+        
       </ul>
 </div> 
 <h1>Connect 4</h1>
@@ -107,7 +106,6 @@
     Upload 
 </label>
 </div>
-  
+</script>
     <script src="index.js"></script>
-
   </body></html>
