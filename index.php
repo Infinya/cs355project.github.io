@@ -113,8 +113,8 @@
     <th style=" border: 1px solid black">Yellow Wins</th>
   </tr>
   <tr>
-    <td name = "redWinH" id = "redWinH" style=" border: 1px solid black"></td>
-    <td name="yellowWinH" id="yellowWinH" style=" border: 1px solid black"></td>
+    <td id = "redWinH" style=" border: 1px solid black"></td>
+    <td id="yellowWinH" style=" border: 1px solid black"></td>
   </tr>
 </table>
 	<script src="index.js"></script>
