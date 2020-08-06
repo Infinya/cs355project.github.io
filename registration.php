@@ -7,7 +7,7 @@ $password = $_POST['password']  ;
 $redWin = $_POST[redWin];
 $yellowWin = $_POST[yellowWin];
 
-function isWin(int $redWin, int $yellowWin){
+function winUpdate(int $redWin, int $yellowWin){
  $sql = "UPDATE users SET redWin = $redWin  WHERE UserEmail= '$email'";
  $sql = "UPDATE users SET yellowWin = $yellowWin  WHERE UserEmail= '$email'";
 }
