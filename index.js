@@ -32,7 +32,7 @@ function whichWins(color){
 		redWins +=1;
 		document.getElementById("redWinH").innerHTML = redWins;
 	}
-	    else if(color=="yellow")
+	    else if(color == "yellow")
 	    {
 		    yellowWins+=1;
 		   document.getElementById("yellowWinH").innerHTML = yelloWins;
@@ -343,8 +343,9 @@ function checkVertically(){
     }
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Vertical 4 in a row!");
-	whichWins(color);
         var val=window.confirm("The "+color+" player wins! Start a new game?");
+		whichWins(color);
+
         if(val==true) restart();
         else return;
        
