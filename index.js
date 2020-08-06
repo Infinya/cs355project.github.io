@@ -19,7 +19,8 @@ var board=["white","white","white","white","white","white","white",
             "white","white","white","white","white","white","white",
             ]
 var movesIndex=[];
-
+function databaseSave(){
+}
 function takeback(){
     var undoIndex=movesIndex.pop();
     tableCells[undoIndex].style.setProperty("background-color","white");
