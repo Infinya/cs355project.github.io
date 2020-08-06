@@ -616,4 +616,5 @@ function update(NslotNum, Ncol0, Ncol1, Ncol2, Ncol3, Ncol4, Ncol5, Ncol6, Nboar
     tableCells[i].style.setProperty("background-color", board[i])
   }
 }
+
     
