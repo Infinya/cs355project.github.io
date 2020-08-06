@@ -32,10 +32,10 @@ function whichWins(color){
 		redWins +=1;
 		document.getElementById("redWinH").innerHTML = redWins;
 	}
-	    else if(color == "yellow")
+	 if(color == "yellow")
 	    {
-		    yellowWins+=1;
-		   document.getElementById("yellowWinH").innerHTML = yelloWins;
+		   yellowWins+=1;
+		   document.getElementById("yellowWinH").innerHTML = yellowWins;
 
 	    }
 }
