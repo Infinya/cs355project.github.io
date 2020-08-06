@@ -55,7 +55,7 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) throw err;
-var sql = "UPDATE users SET redWin ='"+ redWins + "'", "yellowWin = '" + yellowWins +"' WHERE email = '"email"'";
+var sql = "UPDATE users SET redWin = 2, "yellowWin = 3+  WHERE email = 'anjalidutt@outlook.com'";
   con.query(sql, function (err, result) {
     if (err) throw err;
 	console.log(result.affectedRows + " record(s) updated");
