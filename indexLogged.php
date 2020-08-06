@@ -110,23 +110,7 @@
     <td id="yellowWinH" style=" border: 1px solid black"></td>
   </tr>
 </table>
-	<?php
-include('registration.php');
-	
-$content = '<div id="redWinH"></div>';
-$doc = new DomDocument();
-$doc->loadHTML($content);
-$redWin = $doc->getElementById('redWinH');
 
-$content2 = '<div id="yellowWinH"></div>';
-$doc = new DomDocument();
-$doc->loadHTML($content2);
-$yellowWin = $doc->getElementById('yellowWinH');
-
- $sql = "UPDATE users SET redWin = $redWin  WHERE UserEmail= '$email'";
- $sql = "UPDATE users SET yellowWin = $yellowWin  WHERE UserEmail= '$email'";
-
-	?>
 	<script src="index.js"></script>
 </body>
 	</html>
