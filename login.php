@@ -15,7 +15,6 @@
 	      <li><a href="rules.php" >Rule</a></li>
 	      <li><a href="bio-page.php" >Meet the Developers</a></li>
 	      <li><a href="contact-us.php" >Contact-us</a></li>
-	      <li><a href="userPage.php" >User Page</a></li>
 	      <li class="dropdown">
           <a href="#" class="dropbtn">External Links</a>
           <div class="dropdown-content">
@@ -45,10 +44,6 @@
                 <button type="submit" id = "login" name = "login" class="ibtn">Login</button>
             </form>
     </div>
-	    <script>
-	    var email = document.getElementById("emailID").value;
-	 	localStorage.setItem("email", email);  
-
-	    </script>
+	    
 </body>
 </html> 
