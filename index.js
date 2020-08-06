@@ -4,6 +4,8 @@ var redWins = 0;
 var yellowWins = 0;
 document.getElementById("redWinH").innerHTML = redWins;
 document.getElementById("yellowWinH").innerHTML = yellowWins;
+localStorage.setItem("redWins", redWins);
+localStorage.setItem("yellowWins", yellowWins);
 
 // all table cell elements total 42 
 var tableCells=document.getElementsByTagName("td");
