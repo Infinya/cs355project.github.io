@@ -4,6 +4,11 @@ include('index.php');
 $db = mysqli_connect('mars.cs.qc.cuny.edu' , 'duan7325' , '23627325' , 'duan7325') or die("could not connect to database" ) ;
 $email = $_POST['email'] ;
 $password = $_POST['password']  ;
+$redWin = $_POST[redWin];
+$yellowWin = $_POST[yellowWin];
+
+ $sql = "UPDATE users SET redWin = $redWin  WHERE UserEmail= '$email'";
+ $sql = "UPDATE users SET yellowWin = $yellowWin  WHERE UserEmail= '$email'";
 
 if(isset($_POST['login']) )
  {
@@ -78,10 +83,7 @@ if( $password != $confirmpassword )
 {
     array_push($errors , "Password do not match" ) ;
 }
-function updateWinRec(int $yellowWin, int $redWin) {
- $sql = "UPDATE users SET redWin = $redWin  WHERE UserEmail= '$email'";
- $sql = "UPDATE users SET yellowWin = $yellowWin  WHERE UserEmail= '$email'";
-}
+
 //check database for existing user with same username
 $user_check_query = "Select * from users where UserEmail = '$email' LIMIT 1" ;
 
@@ -103,7 +105,7 @@ if( count($errors) == 0 )
 {
     $password = md5($password) ; //This will encrypt password
  
-    $query = "Insert into users (UserName , UserEmail , UserPassword,redWin , yellowWin ) values ( '$name' , '$email' , '$password' , 0 , 0)" ;
+    $query = "Insert into users (UserName , UserEmail , UserPassword,redWin , yellowWin ) values ( '$name' , '$email' , '$password' , $redWin , $yellowWin)" ;
     
     mysqli_query($db , $query ) ;
 
