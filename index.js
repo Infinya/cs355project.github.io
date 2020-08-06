@@ -20,6 +20,7 @@ var board=["white","white","white","white","white","white","white",
             ]
 var movesIndex=[];
 function databaseSave(){  
+/*
   var dataStr = encodeURIComponent(JSON.stringify(gameBoard));
    var gameSaved = {
         numOfSlot: 0,
@@ -51,7 +52,7 @@ function databaseSave(){
         type: 't'
     });
     a.href = URL.createObjectURL(download);
-}
+}*/
 function takeback(){
     var undoIndex=movesIndex.pop();
     tableCells[undoIndex].style.setProperty("background-color","white");
