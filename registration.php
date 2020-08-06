@@ -4,8 +4,8 @@ include('index.php');
 $db = mysqli_connect('mars.cs.qc.cuny.edu' , 'wach8068' , '23018068' , 'wach8068') or die("could not connect to database" ) ;
 $email = $_POST['email'] ;
 $password = $_POST['password']  ;
-$redWin = $_POST['redWinH'];
-$yellowWin = $_POST['yellowWinH'];
+//$redWin = $_POST['redWinH'];
+//$yellowWin = $_POST['yellowWinH'];
 if(isset($_POST['login']) )
  {
     $errors = array() ;
@@ -99,7 +99,7 @@ if( count($errors) == 0 )
 {
     $password = md5($password) ; //This will encrypt password
 
-    $query = "Insert into users (UserName , UserEmail , UserPassword, redWin, yellowWin ) values ( '$name' , '$email' , '$password',$redWin , $yellowWin )" ;
+    $query = "Insert into users (UserName , UserEmail , UserPassword, redWin, yellowWin ) values ( '$name' , '$email' , '$password', 0 , 0 )" ;
     
     mysqli_query($db , $query ) ;
 
