@@ -109,7 +109,6 @@
 </div>
 </script>
     <script src="index.js"></script>
-  </body
 	// color represents the color of checker that been place to the slot at this turn.
 <script>
 var color="";
@@ -722,5 +721,5 @@ function update(NslotNum, Ncol0, Ncol1, Ncol2, Ncol3, Ncol4, Ncol5, Ncol6, Nboar
     tableCells[i].style.setProperty("background-color", board[i])
   }
 }
-</script>
-	></html>
+</script></body>
+	</html>
