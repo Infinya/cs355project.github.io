@@ -19,7 +19,57 @@ var board=["white","white","white","white","white","white","white",
             "white","white","white","white","white","white","white",
             ]
 var movesIndex=[];
-function databaseSave(){
+function databaseSave(){  
+  var dataStr = encodeURIComponent(JSON.stringify(gameBoard));
+   var gameSaved = {
+        numOfSlot: 0,
+        gameCol0 : [],
+        gameCol1 : [],
+        gameCol2 : [],
+        gameCol3 : [],
+        gameCol4 : [],
+        gameCol5 : [],
+        gameCol6 : [],
+        myBoard : []
+    }
+    gameSaved.numOfSlot = slotNum;
+    gameSaved.gameCol0 = gameBoard.col0;
+    gameSaved.gameCol1 = gameBoard.col1;
+    gameSaved.gameCol2 = gameBoard.col2;
+    gameSaved.gameCol3 = gameBoard.col3;
+    gameSaved.gameCol4 = gameBoard.col4;
+    gameSaved.gameCol5 = gameBoard.col5;
+    gameSaved.gameCol6 = gameBoard.col6;
+    gameSaved.myBoard = board;
+
+"<?php
+	    $dataStr = "<script>document.write(dataStr)</script>";
+	include 'registration.php';
+	$email = $email;
+	$name = $name;
+	$password = $password;
+	$redWin = $redWin;
+	$yellowWin = $yellowWin;
+	$db = mysqli_connect('mars.cs.qc.cuny.edu' , 'duan7325' , '23627325' , 'duan7325') or die("could not connect to database" ) ;
+	$sql = "INSERT INTO users(UserName , UserEmail , UserPassword, redWin, yellowWin ,gameJson)
+VALUES ('$name','$email', '$password','$redWin','$yellowWin', '$dataStr')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$conn->close();
+
+	
+
+	?>"
+    var a = document.createElement("a");
+    var downloadData = new Blob([JSON.stringify(gameSaved)], {
+        type: 't'
+    });
+    a.href = URL.createObjectURL(download);
 }
 function takeback(){
     var undoIndex=movesIndex.pop();
