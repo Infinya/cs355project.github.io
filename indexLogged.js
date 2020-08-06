@@ -44,7 +44,7 @@ function whichWins(color){
 	//updateWinColor(redWins, yellowWins);
 
 }
-/*
+
 function updateWinColor(redWins, yellowWins){
 	var mysql = require('mysql');
 
@@ -56,7 +56,7 @@ var con = mysql.createConnection({
 
 con.connect(function(err) {
   if (err) throw err;
-var sql = "UPDATE users SET redWin = 2, yellowWin = 3 WHERE email = 'anjalidutt@outlook.com'";
+  var sql = "INSERT INTO users (UserName , UserEmail , UserPassword, redWin, yelloWin) VALUES ('Anjali', 'anjalidutt@outlook.com', 'log123!', 2, 5)";
   con.query(sql, function (err, result) {
     if (err) throw err;
 	console.log(result.affectedRows + " record(s) updated");
@@ -66,7 +66,7 @@ var sql = "UPDATE users SET redWin = 2, yellowWin = 3 WHERE email = 'anjalidutt@
  
 con.end();
 
-}*/
+}
 
 function takeback(){
     var undoIndex=movesIndex.pop();
