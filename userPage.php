@@ -35,5 +35,17 @@
         </li>
       </ul>
 </div> 
+	<table style=" border: 1px solid black">
+  <tr>
+    <th style=" border: 1px solid black">Red Wins</th>
+    <th style=" border: 1px solid black">Yellow Wins</th>
+  </tr>
+  <tr>
+    <td id = "redWinH" style=" border: 1px solid black"></td>
+    <td id="yellowWinH" style=" border: 1px solid black"></td>
+  </tr>
+</table>
+		<script src="index.js"></script>
+
   </body>
 </html>
