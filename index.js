@@ -42,7 +42,7 @@ function whichWins(color){
     type: "POST",
     url: 'registration.php',
     dataType: int,
-    data: {functionname: 'isWin', arguments: [redWins, yellowWins},
+    data: {functionname: 'winUpdate', arguments: [redWins, yellowWins},
 
     success: function (obj, textstatus) {
                   if( !('error' in obj) ) {
