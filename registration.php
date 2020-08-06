@@ -101,9 +101,11 @@ if( count($errors) == 0 )
    $redWin = 0;
  $yellowWin=0;
    $gameJson = ' ' 
-   newRow($name , $email , $password, $redWin, $yellowWin ,$gameJson);
+    $query = "Insert into users (UserName , UserEmail , UserPassword, redWin, yellowWin ,gameJson 
+) values ( '$name' , '$email' , '$password', $redWin , $yellowWin, '$gameJson')";
+  /* newRow($name , $email , $password, $redWin, $yellowWin ,$gameJson);
     mysqli_query($db , $query ) ;
-
+*/
     $_SESSION['UserName'] = $name ;
     $_SESSION['success'] = "You are now signed Up" ;
   /* $sql = "CREATE TABLE `".$email."` (
@@ -121,11 +123,11 @@ if( count($errors) == 0 )
 }
  
   
-}
+}/*
 function newRow($name , $email , $password, int $redWin,int $yellowWin ,$gameJson) {
  $query = "Insert into users (UserName , UserEmail , UserPassword, redWin, yellowWin ,gameJson 
 ) values ( '$name' , '$email' , '$password', $redWin , $yellowWin, '$gameJson')" ;
-}
+}*/
 ?>
 <?php if (is_countable($errors) && count($errors) > 0) : ?>
     <div>
