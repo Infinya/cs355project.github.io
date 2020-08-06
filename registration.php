@@ -78,7 +78,10 @@ if( $password != $confirmpassword )
 {
     array_push($errors , "Password do not match" ) ;
 }
-
+function updateWinRec(int $yellowWin, int $redWin) {
+ $sql = "UPDATE users SET redWin = $redWin  WHERE UserEmail= '$email'";
+ $sql = "UPDATE users SET yellowWin = $yellowWin  WHERE UserEmail= '$email'";
+}
 //check database for existing user with same username
 $user_check_query = "Select * from users where UserEmail = '$email' LIMIT 1" ;
 
@@ -99,8 +102,8 @@ if($user)
 if( count($errors) == 0 )
 {
     $password = md5($password) ; //This will encrypt password
-
-    $query = "Insert into users (UserName , UserEmail , UserPassword ) values ( '$name' , '$email' , '$password' )" ;
+ 
+    $query = "Insert into users (UserName , UserEmail , UserPassword,redWin , yellowWin ) values ( '$name' , '$email' , '$password' , 0 , 0)" ;
     
     mysqli_query($db , $query ) ;
 
