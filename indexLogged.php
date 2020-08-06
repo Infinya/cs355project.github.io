@@ -111,7 +111,12 @@
     <td id="yellowWinH" style=" border: 1px solid black"><input type="text" name="yellowWin" form="winUpdate"/></td>
   </tr>
 </table>
-<?php/*
+<?php
+$redWin = $_POST[redWin];
+$yellowWin = $_POST[yellowWin];
+$sql = "UPDATE users SET redWin = $redWin  WHERE UserEmail= '$email'";
+ $sql = "UPDATE users SET yellowWin = $yellowWin  WHERE UserEmail= '$email'";
+	/*
 $content = '<div id="redWinH"></div>';
 $doc = new DomDocument();
 $doc->loadHTML($content); // That's the addition
