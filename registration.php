@@ -28,7 +28,7 @@ if(isset($_POST['login']) )
             $_SESSION['email'] = $email ;
             $_SESSION['success'] = "Logged in Successfully" ;
             
-            echo "<script> window.location.assign('indexLogged.php'); </script>";
+            echo "<script> window.locat	echo "You are now logged in. Thank you :)" ;
 
             
             
