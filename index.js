@@ -1,5 +1,4 @@
 // color represents the color of checker that been place to the slot at this turn.
-<script>
 var color="";
 // all table cell elements total 42 
 var tableCells=document.getElementsByTagName("td");
@@ -325,7 +324,8 @@ function checkVertically(){
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Vertical 4 in a row!");
         var val=window.confirm("The "+color+" player wins! Start a new game?")
-	/*<?php
+	/*
+	   <?php
 	if ($conn->connect_error) {
  		 die();
 		}
@@ -616,5 +616,4 @@ function update(NslotNum, Ncol0, Ncol1, Ncol2, Ncol3, Ncol4, Ncol5, Ncol6, Nboar
     tableCells[i].style.setProperty("background-color", board[i])
   }
 }
-</script>
     
