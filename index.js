@@ -42,29 +42,10 @@ function databaseSave(){
     gameSaved.gameCol6 = gameBoard.col6;
     gameSaved.myBoard = board;
 
-"<?php
-	    $dataStr = "<script>document.write(dataStr)</script>";
+	var phpJSON = <?php 
 	include 'registration.php';
-	$email = $email;
-	$name = $name;
-	$password = $password;
-	$redWin = $redWin;
-	$yellowWin = $yellowWin;
-	$db = mysqli_connect('mars.cs.qc.cuny.edu' , 'duan7325' , '23627325' , 'duan7325') or die("could not connect to database" ) ;
-	$sql = "INSERT INTO users(UserName , UserEmail , UserPassword, redWin, yellowWin ,gameJson)
-VALUES ('$name','$email', '$password','$redWin','$yellowWin', '$dataStr')";
-
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$conn->close();
-
-	
-
-	?>"
+	echo newRow($name , $email , $password, $redWin,$yellowWin ,dataStr);
+	?>
     var a = document.createElement("a");
     var downloadData = new Blob([JSON.stringify(gameSaved)], {
         type: 't'
