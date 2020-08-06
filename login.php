@@ -37,7 +37,7 @@
     <div class="form-body">
             <form action= "registration.php" method = "POST" >
                 <label for="email">E-mail</label>
-                <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
+                <input class="form-control" type="email" name="email" id="emailID" placeholder="E-mail Address" required>
                 <label for="password">Password</label>
                 <input class="form-control" type="password" name="password" placeholder="Password" required>
                 <input type="checkbox" id="chk1"><label for="chk1">Remember me</label>
@@ -45,5 +45,10 @@
                 <button type="submit" id = "login" name = "login" class="ibtn">Login</button>
             </form>
     </div>
+	    <script>
+	    var email = document.getElementById("emailID").value;
+	 	localStorage.setItem("email", email);  
+
+	    </script>
 </body>
 </html> 
