@@ -99,15 +99,16 @@ if( count($errors) == 0 )
 {
     $password = md5($password) ; //This will encrypt password
 
-    $query = "Insert into users (UserName , UserEmail , UserPassword, redWin, yellowWin ) values ( '$name' , '$email' , '$password', 0 ,0 )" ;
+    $query = "Insert into users (UserName , UserEmail , UserPassword, redWin, yellowWin ,gameJson 
+) values ( '$name' , '$email' , '$password', 0 ,0 , '')" ;
     
     mysqli_query($db , $query ) ;
 
     $_SESSION['UserName'] = $name ;
     $_SESSION['success'] = "You are now signed Up" ;
-   $sql = "CREATE TABLE `".$email."` (
+  /* $sql = "CREATE TABLE `".$email."` (
        gameJson VARCHAR(5000)
-     )";
+     )";*/
 
 
            /* echo '<script type="text/javascript">';
