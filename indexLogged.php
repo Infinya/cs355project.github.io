@@ -147,6 +147,6 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();*/
 ?>
-	<script src="index.js"></script>
+	<script src="indexLogged.js"></script>
 </body>
 	</html>
