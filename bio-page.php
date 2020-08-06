@@ -108,7 +108,7 @@
       					<h2>About Hai Lin</h2>
     				</div>
    				<div class="modal-body">
-      					<p>Hai is a student at CUNY Queens College who aspires to work as a quality assurance enginner</p>
+      					<p>Hi, I am Hai Lin. I am a senior student at Queens College majoring in Computer Science, My interest outside of school is anime, music, and books</p>
       					
     				</div>
    
