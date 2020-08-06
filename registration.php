@@ -84,7 +84,7 @@ $user_check_query = "Select * from users where UserEmail = '$email' LIMIT 1" ;
 $results = mysqli_query( $db , $user_check_query ) ;
 $user = mysqli_fetch_assoc($results) ;
 
-/*
+
 if($user)
 {
     if($user["UserEmail"] === $email)
@@ -92,14 +92,14 @@ if($user)
         array_push($errors , "This email is already registered" ) ;
     }
 }
-*/
+
 //Register user if no errors
 
 if( count($errors) == 0 )
 {
     $password = md5($password) ; //This will encrypt password
 
-    $query = "Insert into users (UserName , UserEmail , UserPassword, redWin, yellowWin ) values ( '$name' , '$email' , '$password', 0 , 0 )" ;
+    $query = "Insert into users (UserName , UserEmail , UserPassword, redWin, yellowWin, gameJson ) values ( '$name' , '$email' , '$password', 0 , 0, '' )" ;
     
     mysqli_query($db , $query ) ;
 
