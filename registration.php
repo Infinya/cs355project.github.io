@@ -7,9 +7,10 @@ $password = $_POST['password']  ;
 $redWin = $_POST[redWin];
 $yellowWin = $_POST[yellowWin];
 
+function isWin(int $redWin, int $yellowWin){
  $sql = "UPDATE users SET redWin = $redWin  WHERE UserEmail= '$email'";
  $sql = "UPDATE users SET yellowWin = $yellowWin  WHERE UserEmail= '$email'";
-
+}
 if(isset($_POST['login']) )
  {
     $errors = array() ;
