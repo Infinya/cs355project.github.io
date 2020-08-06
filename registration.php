@@ -4,13 +4,7 @@ include('index.php');
 $db = mysqli_connect('mars.cs.qc.cuny.edu' , 'duan7325' , '23627325' , 'duan7325') or die("could not connect to database" ) ;
 $email = $_POST['email'] ;
 $password = $_POST['password']  ;
-$redWin = $_POST[redWin];
-$yellowWin = $_POST[yellowWin];
 
-function winUpdate(int $redWin, int $yellowWin){
- $sql = "UPDATE users SET redWin = $redWin  WHERE UserEmail= '$email'";
- $sql = "UPDATE users SET yellowWin = $yellowWin  WHERE UserEmail= '$email'";
-}
 if(isset($_POST['login']) )
  {
     $errors = array() ;
@@ -34,7 +28,6 @@ if(isset($_POST['login']) )
             $_SESSION['email'] = $email ;
             $_SESSION['success'] = "Logged in Successfully" ;
             
-            echo "You are now logged in. Thank you :)" ;
             echo "<script> window.location.assign('indexLogged.php'); </script>";
 
             
@@ -106,7 +99,7 @@ if( count($errors) == 0 )
 {
     $password = md5($password) ; //This will encrypt password
  
-    $query = "Insert into users (UserName , UserEmail , UserPassword,redWin , yellowWin ) values ( '$name' , '$email' , '$password' , $redWin , $yellowWin)" ;
+    $query = "Insert into users (UserName , UserEmail , UserPassword) values ( '$name' , '$email' , '$password')" ;
     
     mysqli_query($db , $query ) ;
 
