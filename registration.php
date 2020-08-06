@@ -28,8 +28,7 @@ if(isset($_POST['login']) )
             $_SESSION['email'] = $email ;
             $_SESSION['success'] = "Logged in Successfully" ;
             
-            echo "<script> window.locat	echo "You are now logged in. Thank you :)" ;
-
+            echo "You are now logged in. Thank you :)" ;
             
             
         }
@@ -98,8 +97,8 @@ if($user)
 if( count($errors) == 0 )
 {
     $password = md5($password) ; //This will encrypt password
- 
-    $query = "Insert into users (UserName , UserEmail , UserPassword, redWin, yelloWin) values ( '$name' , '$email' , '$password', 0 ,0)" ;
+
+    $query = "Insert into users (UserName , UserEmail , UserPassword ) values ( '$name' , '$email' , '$password' )" ;
     
     mysqli_query($db , $query ) ;
 
