@@ -100,13 +100,13 @@
 <div class="button">
   <button onclick="reset()" >New game</button>
   <button onclick="takeback()">Reverse</button>
-	<button onclick="databaseSave()">Save</button>
+	<!--<button onclick="databaseSave()">Save</button>-->
     <button onclick= "save()">Download Json</button>
        <label class="custom-file-upload">
     <input id="file" type="file"/>
     Upload 
 </label>
 </div>
-   <script src="index.js"></script>
+	<script src="index.js"></script>
 </body>
 	</html>
