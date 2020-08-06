@@ -120,14 +120,14 @@ function myFunction(event) {
                         tableCells[(i*7)].style.setProperty("background-color","red");
                         color="red";
                         gameBoard.col0[i]="red";
-			    console.log("red put in slot number " + slotNum);
+			   // console.log("red put in col 0 row" + i);
                     }
                     else{
                         board[(i*7)]="yellow";
                         tableCells[(i*7)].style.setProperty("background-color","yellow");
                         color="yellow";
                         gameBoard.col0[i]="yellow";
-			    console.log("yellow put in slot number " + slotNum);
+			  //  console.log("yellow put in slot number " + slotNum);
 
                     }
                     rowNum=i;
@@ -144,7 +144,7 @@ function myFunction(event) {
                         tableCells[(i*7)+1].style.setProperty("background-color","red");
                         color="red";
                         gameBoard.col1[i]="red";
-			     console.log("red put in slot number " + slotNum);
+			   //  console.log("red put in slot number " + slotNum);
 
                     }
                     else{
@@ -152,7 +152,7 @@ function myFunction(event) {
                         tableCells[(i*7)+1].style.setProperty("background-color","yellow");
                         color="yellow";
                         gameBoard.col1[i]="yellow";
-			    console.log("yellow put in slot number " + slotNum);
+			  //  console.log("yellow put in slot number " + slotNum);
 
                     }
                     rowNum=i;
@@ -169,7 +169,7 @@ function myFunction(event) {
                         tableCells[(i*7)+2].style.setProperty("background-color","red");
                         color="red";
                         gameBoard.col2[i]="red";
-			 console.log("red put in slot number " + slotNum);
+			// console.log("red put in slot number " + slotNum);
 
                     }
                     else{
@@ -177,7 +177,7 @@ function myFunction(event) {
                         tableCells[(i*7)+2].style.setProperty("background-color","yellow");
                         color="yellow";
                         gameBoard.col2[i]="yellow";
-			    console.log("yellow put in slot number " + slotNum);
+			   // console.log("yellow put in slot number " + slotNum);
                     }
                     rowNum=i;
                     slotNum--;
@@ -193,14 +193,14 @@ function myFunction(event) {
                         tableCells[(i*7)+3].style.setProperty("background-color","red");
                         color="red";
                         gameBoard.col3[i]="red";
-			    console.log("red put in slot number " + slotNum);
+			  //  console.log("red put in slot number " + slotNum);
                     }
                     else{
                         board[(i*7)+3]="yellow";
                         tableCells[(i*7)+3].style.setProperty("background-color","yellow");
                         color="yellow";
                         gameBoard.col3[i]="yellow";
-			    console.log("yellow put in slot number " + slotNum);
+			 //   console.log("yellow put in slot number " + slotNum);
                     }
                     rowNum=i;
                     slotNum--;
@@ -216,14 +216,14 @@ function myFunction(event) {
                         tableCells[(i*7)+4].style.setProperty("background-color","red");
                         color="red";
                         gameBoard.col4[i]="red";
-			    console.log("red put in slot number " + slotNum);
+			//    console.log("red put in slot number " + slotNum);
                     }
                     else{
                         board[(i*7)+4]="yellow";
                         tableCells[(i*7)+4].style.setProperty("background-color","yellow");
                         color="yellow";
                         gameBoard.col4[i]="yellow";
-			    console.log("yellow put in slot number " + slotNum);
+			   // console.log("yellow put in slot number " + slotNum);
                     }
                     rowNum=i;
                     slotNum--;
@@ -239,14 +239,14 @@ function myFunction(event) {
                         tableCells[(i*7)+5].style.setProperty("background-color","red");
                         color="red";
                         gameBoard.col5[i]="red";
-			    console.log("red put in slot number " + slotNum);
+			  //  console.log("red put in slot number " + slotNum);
                     }
                     else{
                         board[(i*7)+5]="yellow";
                         tableCells[(i*7)+5].style.setProperty("background-color","yellow");
                         color="yellow";
                         gameBoard.col5[i]="yellow";
-			    console.log("yellow put in slot number " + slotNum);
+			 //   console.log("yellow put in slot number " + slotNum);
                     }
                     rowNum=i;
                     slotNum--;
@@ -262,14 +262,14 @@ function myFunction(event) {
                         tableCells[(i*7)+6].style.setProperty("background-color","red");
                         color="red";
                         gameBoard.col6[i]="red";
-			    console.log("red put in slot number " + slotNum);
+			   // console.log("red put in slot number " + slotNum);
                     }
                     else{
                         board[(i*7)+6]="yellow";
                         tableCells[(i*7)+6].style.setProperty("background-color","yellow");
                         color="yellow";
                         gameBoard.col6[i]="yellow";
-			    console.log("yellow put in slot number " + slotNum);
+			   // console.log("yellow put in slot number " + slotNum);
                     }
                     rowNum=i;
                     slotNum--;
