@@ -110,7 +110,35 @@
     <td id="yellowWinH" style=" border: 1px solid black"></td>
   </tr>
 </table>
+<?php
+$content = '<div id="redWinH"></div>';
+$doc = new DomDocument();
+$doc->loadHTML($content); // That's the addition
+$redWin = $doc->getElementById('tablename');
+echo $redWin->textContent;
+	
+$content2 = '<div id="yellowWinH"></div>';
+$doc = new DomDocument();
+$doc->loadHTML($content2); // That's the addition
+$yellowWin = $doc->getElementById('tablename');
+echo $yellowWin->textContent;
+	
+$conn = new mysqli($servernam$db = mysqli_connect('mars.cs.qc.cuny.edu' , 'duan7325' , '23627325' , 'duan7325') or die("could not connect to database" ) ;
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
 
+$sql = "UPDATE users SET redWin = $redWin WHERE UserEmail='$email'";
+$sql = "UPDATE users SET yellowWin = $yellowWin WHERE UserEmail='$email'";
+
+if ($conn->query($sql) === TRUE) {
+  echo "Record updated successfully";
+} else {
+  echo "Error updating record: " . $conn->error;
+}
+
+$conn->close();
+?>
 	<script src="index.js"></script>
 </body>
 	</html>
