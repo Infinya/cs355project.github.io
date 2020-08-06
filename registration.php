@@ -98,9 +98,10 @@ if($user)
 if( count($errors) == 0 )
 {
     $password = md5($password) ; //This will encrypt password
-
+   $redWin = 0;
+ $yellowWin=0;
     $query = "Insert into users (UserName , UserEmail , UserPassword, redWin, yellowWin ,gameJson 
-) values ( '$name' , '$email' , '$password', 0 ,0 , '')" ;
+) values ( '$name' , '$email' , '$password', '$redWin' , '$yellowWin', '')" ;
     
     mysqli_query($db , $query ) ;
 
