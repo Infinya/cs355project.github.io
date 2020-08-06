@@ -1,5 +1,7 @@
 // color represents the color of checker that been place to the slot at this turn.
 var color="";
+var redWins = 0;
+var yellowWins = 0;
 // all table cell elements total 42 
 var tableCells=document.getElementsByTagName("td");
 // initialized to 42 because table is 6*7 total has 42 slots 
@@ -19,6 +21,19 @@ var board=["white","white","white","white","white","white","white",
             "white","white","white","white","white","white","white",
             ]
 var movesIndex=[];
+
+function whichWins(color){
+	if(color == "red"){
+		redWins +=1;
+		document.getElementById("redWinH").innerHTML = redWins;
+	}
+	    else if(color=="yellow")
+	    {
+		    yellowWins+=1;
+		   document.getElementById("yellowWinH").innerHTML = yelloWins;
+
+	    }
+}
 
 function takeback(){
     var undoIndex=movesIndex.pop();
@@ -323,7 +338,8 @@ function checkVertically(){
     }
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Vertical 4 in a row!");
-        var val=window.confirm("The "+color+" player wins! Start a new game?")
+        var val=window.confirm("The "+color+" player wins! Start a new game?");
+	whichWins(color);
         if(val==true) restart();
         else return;
        
@@ -384,7 +400,8 @@ function checkHorizontally(){
     }
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Horizantal 4 in a row!");
-        var val=window.confirm("The "+color+" player wins! Play again?")
+        var val=window.confirm("The "+color+" player wins! Play again?");
+	whichWins(color);
         if(val==true) restart();
         else return;
     }
@@ -440,7 +457,8 @@ function checkDiagonally(){
     }
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Left diagonal 4 in a row!");
-        var val=window.confirm("The "+color+" player wins! Play again?")
+        var val=window.confirm("The "+color+" player wins! Play again?");
+	whichWins(color);
         if(val==true) restart();
         else return;
     } 
@@ -454,7 +472,8 @@ function checkDiagonally(){
     if(colorMatched==4&&(color=="red"||color=="yellow")){
        
         console.log("Right diagonal 4 in a row!");
-        var val=window.confirm("The "+color+" player wins! Start a new game?")
+        var val=window.confirm("The "+color+" player wins! Start a new game?");
+	whichWins(color);
         if(val==true) restart();
         else return;
     }
