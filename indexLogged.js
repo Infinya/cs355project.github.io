@@ -6,6 +6,9 @@ document.getElementById("redWinH").innerHTML = redWins;
 document.getElementById("yellowWinH").innerHTML = yellowWins;
 localStorage.setItem("redWins", redWins);
 localStorage.setItem("yellowWins", yellowWins);
+var emailVar = localStorage.getItem("email");  
+var email = emailVar;
+
 
 // all table cell elements total 42 
 var tableCells=document.getElementsByTagName("td");
@@ -36,9 +39,32 @@ function whichWins(color){
 	    {
 		   yellowWins+=1;
 		   document.getElementById("yellowWinH").innerHTML = yellowWins;
+		    function updateWinColor(redWins, yellowWins);
 
 	    }
 	
+}
+function updateWinColor(redWins, yellowWins){
+var mysql = require('mysql');
+var connection = mysql.createConnection({
+    host: 'mars.cs.qc.cuny.edu',
+    user: 'duan7325',
+    password: '23627325',
+    database: 'duan7325',
+});
+connection.connect();
+ 
+console.log("Connected to Mysql");
+ 
+var sql = "UPDATE users set redWin =? , yellowWin =?  WHERE email = ?";
+ 
+var query = connection.query(sql, [redWin, yellowWin, email], function(err, result) {
+    console.log("Record Updated!!");
+    console.log(result);
+});
+ 
+connection.end();
+
 }
 
 function takeback(){
