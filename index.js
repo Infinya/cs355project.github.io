@@ -2,6 +2,9 @@
 var color="";
 var redWins = 0;
 var yellowWins = 0;
+document.getElementById("redWinH").innerHTML = redWins;
+document.getElementById("yellowWinH").innerHTML = yellowWins;
+
 // all table cell elements total 42 
 var tableCells=document.getElementsByTagName("td");
 // initialized to 42 because table is 6*7 total has 42 slots 
@@ -338,8 +341,8 @@ function checkVertically(){
     }
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Vertical 4 in a row!");
-        var val=window.confirm("The "+color+" player wins! Start a new game?");
 	whichWins(color);
+        var val=window.confirm("The "+color+" player wins! Start a new game?");
         if(val==true) restart();
         else return;
        
@@ -400,8 +403,8 @@ function checkHorizontally(){
     }
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Horizantal 4 in a row!");
+	 whichWins(color);
         var val=window.confirm("The "+color+" player wins! Play again?");
-	whichWins(color);
         if(val==true) restart();
         else return;
     }
@@ -457,8 +460,8 @@ function checkDiagonally(){
     }
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Left diagonal 4 in a row!");
+	  whichWins(color);
         var val=window.confirm("The "+color+" player wins! Play again?");
-	whichWins(color);
         if(val==true) restart();
         else return;
     } 
