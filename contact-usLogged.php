@@ -14,7 +14,7 @@
 	      <li><a href="rulesLogged.php" >Rule</a></li>
 	      <li><a href="bio-pageLogged.php" >Meet the Developers</a></li>
 	      <li><a href="contact-usLogged.php" >Contact-us</a></li>
-	      	      <li><a href="userPage.php" >User Page</a></li>
+	      	      <li><a href="userPageLogged.php" >User Page</a></li>
 	      <li class="dropdown">
           <a href="#" class="dropbtn">External Links</a>
           <div class="dropdown-content">
