@@ -110,7 +110,7 @@
     <td id="yellowWinH" style=" border: 1px solid black"></td>
   </tr>
 </table>
-<?php
+<?php/*
 $content = '<div id="redWinH"></div>';
 $doc = new DomDocument();
 $doc->loadHTML($content); // That's the addition
@@ -137,7 +137,7 @@ if ($conn->query($sql) === TRUE) {
   echo "Error updating record: " . $conn->error;
 }
 
-$conn->close();
+$conn->close();*/
 ?>
 	<script src="index.js"></script>
 </body>
