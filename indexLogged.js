@@ -41,9 +41,10 @@ function whichWins(color){
 		   document.getElementById("yellowWinH").innerHTML = yellowWins;
 
 	    }
-	updateWinColor(redWins, yellowWins);
+	//updateWinColor(redWins, yellowWins);
 
 }
+/*
 function updateWinColor(redWins, yellowWins){
 	var mysql = require('mysql');
 
@@ -65,7 +66,7 @@ var sql = "UPDATE users SET redWin = 2, yellowWin = 3 WHERE email = 'anjalidutt@
  
 con.end();
 
-}
+}*/
 
 function takeback(){
     var undoIndex=movesIndex.pop();
