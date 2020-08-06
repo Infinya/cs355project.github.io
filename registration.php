@@ -100,9 +100,8 @@ if( count($errors) == 0 )
     $password = md5($password) ; //This will encrypt password
    $redWin = 0;
  $yellowWin=0;
-    $query = "Insert into users (UserName , UserEmail , UserPassword, redWin, yellowWin ,gameJson 
-) values ( '$name' , '$email' , '$password', '$redWin' , '$yellowWin', '')" ;
-    
+   $gameJson = ' ' 
+   newRow($name , $email , $password, $redWin, $yellowWin ,$gameJson);
     mysqli_query($db , $query ) ;
 
     $_SESSION['UserName'] = $name ;
@@ -121,8 +120,12 @@ if( count($errors) == 0 )
     mysqli_close($db);
 }
  
+  
 }
-
+function newRow($name , $email , $password, int $redWin,int $yellowWin ,$gameJson) {
+ $query = "Insert into users (UserName , UserEmail , UserPassword, redWin, yellowWin ,gameJson 
+) values ( '$name' , '$email' , '$password', $redWin , $yellowWin, '$gameJson')" ;
+}
 ?>
 <?php if (is_countable($errors) && count($errors) > 0) : ?>
     <div>
@@ -131,7 +134,7 @@ if( count($errors) == 0 )
     <?php endforeach ?>
     <!--redirect to index.php after 2 seconds-->
     <?php header("Refresh:2; url= index.php"); ?>
-    </div>
+    /div>
     
     <?php endif ?>
 <!--    <a href="index.php">Home</a>*/ -->
