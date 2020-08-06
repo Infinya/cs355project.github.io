@@ -62,35 +62,8 @@ var sql = "UPDATE users SET redWin ='"+ redWins + "', yellowWin = '" + yellowWin
   });
 });
 
-
-
-var mysqli = require('mysqli');
-var connection = mysqli.createConnection({
-    host: 'mars.cs.qc.cuny.edu',
-    user: 'duan7325',
-    password: '23627325',
-    database: 'duan7325'
-});
-connection.connect();
-	connection.connect(function(err) {
-  if (err) throw err;
-  var sql = "UPDATE schools SET city = 'Flushing' WHERE name = 'Queens College'";
-  con.query(sql, function (err, result) {
-    if (err) throw err;
-	console.log(result.affectedRows + " record(s) updated");
-  });
-});
-
  
-console.log("Connected to Mysql");
- 
-var sql = "UPDATE users set redWin =? , yellowWin =?  WHERE email = ?";
-var query = connection.query(sql, [redWin, yellowWin, email], function(err, result) {
-    console.log("Record Updated!!");
-    console.log(result);
-});
- 
-connection.end();
+con.end();
 
 }
 
