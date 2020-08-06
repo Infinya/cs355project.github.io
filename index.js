@@ -346,7 +346,7 @@ function checkVertically(){
         var val=window.confirm("The "+color+" player wins! Start a new game?");
 		whichWins(color);
 
-        if(val==true) restart();
+        if(val==true) reset();
         else return;
        
     }
@@ -406,9 +406,9 @@ function checkHorizontally(){
     }
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Horizantal 4 in a row!");
-	 whichWins(color);
         var val=window.confirm("The "+color+" player wins! Play again?");
-        if(val==true) restart();
+	whichWins(color);
+        if(val==true) reset();
         else return;
     }
 }
@@ -463,9 +463,9 @@ function checkDiagonally(){
     }
     if(colorMatched==4&&(color=="red"||color=="yellow")){
         console.log("Left diagonal 4 in a row!");
-	  whichWins(color);
         var val=window.confirm("The "+color+" player wins! Play again?");
-        if(val==true) restart();
+        whichWins(color);
+        if(val==true) reset();
         else return;
     } 
     
@@ -480,7 +480,7 @@ function checkDiagonally(){
         console.log("Right diagonal 4 in a row!");
         var val=window.confirm("The "+color+" player wins! Start a new game?");
 	whichWins(color);
-        if(val==true) restart();
+        if(val==true) reset();
         else return;
     }
 }
