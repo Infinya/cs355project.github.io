@@ -39,18 +39,18 @@ function whichWins(color){
 	    {
 		   yellowWins+=1;
 		   document.getElementById("yellowWinH").innerHTML = yellowWins;
-		    function updateWinColor(redWins, yellowWins);
 
 	    }
-	
+			   updateWinColor(redWins, yellowWins);
+
 }
 function updateWinColor(redWins, yellowWins){
-var mysql = require('mysql');
-var connection = mysql.createConnection({
+var mysqli = require('mysqli');
+var connection = mysqli.createConnection({
     host: 'mars.cs.qc.cuny.edu',
     user: 'duan7325',
     password: '23627325',
-    database: 'duan7325',
+    database: 'duan7325'
 });
 connection.connect();
  
