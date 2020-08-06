@@ -38,6 +38,21 @@ function whichWins(color){
 		   document.getElementById("yellowWinH").innerHTML = yellowWins;
 
 	    }
+	jQuery.ajax({
+    type: "POST",
+    url: 'registration.php',
+    dataType: int,
+    data: {functionname: 'isWin', arguments: [redWins, yellowWins},
+
+    success: function (obj, textstatus) {
+                  if( !('error' in obj) ) {
+                      yourVariable = obj.result;
+                  }
+                  else {
+                      console.log(obj.error);
+                  }
+            }
+});
 }
 
 function takeback(){
